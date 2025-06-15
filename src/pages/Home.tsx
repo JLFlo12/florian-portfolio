@@ -6,6 +6,7 @@ import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import ToolsSection from '@/components/ToolsSection';
+import RotatingGlobe from '@/components/RotatingGlobe';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -122,16 +123,14 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            {/* Profile Image Placeholder */}
+            {/* Rotating Globe */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="flex justify-center"
             >
-              <div className="w-80 h-80 bg-gradient-to-br from-primary to-orange-primary-600 rounded-full flex items-center justify-center">
-                <span className="text-6xl font-bold text-primary-foreground">F</span>
-              </div>
+              <RotatingGlobe />
             </motion.div>
           </div>
         </div>
@@ -174,7 +173,7 @@ const Home = () => {
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-primary to-orange-primary-600 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full"
                       />
                     </div>
                   </motion.div>
@@ -212,7 +211,7 @@ const Home = () => {
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-orange-primary-500 to-orange-primary-700 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full"
                       />
                     </div>
                   </motion.div>
