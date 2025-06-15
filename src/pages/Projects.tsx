@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -86,7 +87,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-6 py-20 bg-background">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -94,10 +95,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-6xl lg:text-8xl font-black mb-4">
+          <h1 className="text-6xl lg:text-8xl font-black mb-4 text-foreground">
             {t('projects.title')}
           </h1>
-          <div className="w-24 h-1 bg-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </motion.div>
 
         {/* Completed Projects */}
@@ -107,7 +108,7 @@ const Projects = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16"
         >
-          <h2 className="text-4xl font-bold text-purple-400 mb-8">
+          <h2 className="text-4xl font-bold text-primary mb-8">
             {t('projects.completed')}
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -120,17 +121,17 @@ const Projects = () => {
                 whileHover={{ scale: 1.02 }}
                 className="group"
               >
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-purple-500/50 transition-all duration-300 h-full">
+                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <CardTitle className="text-white group-hover:text-purple-400 transition-colors">
+                      <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </CardTitle>
                       <Badge variant="outline" className="bg-green-600/20 text-green-400 border-green-500/50">
                         ✓
                       </Badge>
                     </div>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="text-muted-foreground">
                       {/* @ts-ignore */}
                       {project.description[t('lng') === 'en' ? 'en' : 'fr']}
                     </CardDescription>
@@ -141,7 +142,7 @@ const Projects = () => {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="bg-gray-800 text-gray-300 hover:bg-gray-700"
+                          className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
                         >
                           {tech}
                         </Badge>
@@ -160,7 +161,7 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <h2 className="text-4xl font-bold text-orange-400 mb-8">
+          <h2 className="text-4xl font-bold text-primary mb-8">
             {t('projects.inProgress')}
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -173,17 +174,17 @@ const Projects = () => {
                 whileHover={{ scale: 1.02 }}
                 className="group"
               >
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-orange-500/50 transition-all duration-300 h-full">
+                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <CardTitle className="text-white group-hover:text-orange-400 transition-colors">
+                      <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </CardTitle>
-                      <Badge variant="outline" className="bg-orange-600/20 text-orange-400 border-orange-500/50">
+                      <Badge variant="outline" className="bg-orange-primary-600/20 text-orange-primary-400 border-orange-primary-500/50">
                         ⏳
                       </Badge>
                     </div>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="text-muted-foreground">
                       {/* @ts-ignore */}
                       {project.description[t('lng') === 'en' ? 'en' : 'fr']}
                     </CardDescription>
@@ -194,7 +195,7 @@ const Projects = () => {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="bg-gray-800 text-gray-300 hover:bg-gray-700"
+                          className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
                         >
                           {tech}
                         </Badge>

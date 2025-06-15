@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -44,7 +45,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-6xl lg:text-8xl font-black leading-none"
+                  className="text-6xl lg:text-8xl font-black leading-none text-foreground"
                 >
                   FLORIAN
                 </motion.h1>
@@ -52,7 +53,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-xl lg:text-2xl text-purple-400 font-medium"
+                  className="text-xl lg:text-2xl text-primary font-medium"
                 >
                   {t('home.role')}
                 </motion.p>
@@ -62,7 +63,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-lg text-gray-300 max-w-md leading-relaxed"
+                className="text-lg text-muted-foreground max-w-md leading-relaxed"
               >
                 {t('home.bio')}
               </motion.p>
@@ -71,7 +72,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex items-center space-x-2 text-gray-400"
+                className="flex items-center space-x-2 text-muted-foreground"
               >
                 <MapPin className="h-5 w-5" />
                 <span>{t('home.location')}</span>
@@ -85,24 +86,24 @@ const Home = () => {
                 className="flex items-center space-x-4"
               >
                 <a
-                  href="mailto:florian.exemple@gmail.com"
-                  className="p-3 bg-purple-600 hover:bg-purple-500 rounded-full transition-colors"
+                  href="mailto:f.girardot--lahogue@rt-iut.re"
+                  className="p-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-colors"
                 >
                   <Mail className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://github.com/florian-dev"
+                  href="https://github.com/JLFlo12"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors"
+                  className="p-3 bg-muted hover:bg-accent text-muted-foreground hover:text-accent-foreground rounded-full transition-colors"
                 >
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/florian-reseaux"
+                  href="https://www.linkedin.com/in/florian-girardot-lahogue-4aa367341/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-blue-600 hover:bg-blue-500 rounded-full transition-colors"
+                  className="p-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
@@ -114,7 +115,7 @@ const Home = () => {
                 transition={{ delay: 1.2, duration: 0.8 }}
               >
                 <Link to="/projects">
-                  <Button className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 text-lg">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg">
                     {t('home.cta')}
                   </Button>
                 </Link>
@@ -128,8 +129,8 @@ const Home = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="flex justify-center"
             >
-              <div className="w-80 h-80 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-6xl font-bold text-white">F</span>
+              <div className="w-80 h-80 bg-gradient-to-br from-primary to-orange-primary-600 rounded-full flex items-center justify-center">
+                <span className="text-6xl font-bold text-primary-foreground">F</span>
               </div>
             </motion.div>
           </div>
@@ -140,7 +141,7 @@ const Home = () => {
       <ToolsSection />
 
       {/* Skills Section */}
-      <section className="py-20 px-6 bg-gray-900/50">
+      <section className="py-20 px-6 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Technical Skills */}
@@ -150,7 +151,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-8 text-purple-400">
+              <h2 className="text-4xl font-bold mb-8 text-primary">
                 {t('home.skillsTitle')}
               </h2>
               <div className="space-y-6">
@@ -164,16 +165,16 @@ const Home = () => {
                     className="space-y-2"
                   >
                     <div className="flex justify-between">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-purple-400">{skill.level}%</span>
+                      <span className="text-foreground">{skill.name}</span>
+                      <span className="text-primary">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-purple-600 to-blue-500 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary to-orange-primary-600 rounded-full"
                       />
                     </div>
                   </motion.div>
@@ -188,7 +189,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-8 text-purple-400">
+              <h2 className="text-4xl font-bold mb-8 text-primary">
                 {t('home.softSkillsTitle')}
               </h2>
               <div className="space-y-6">
@@ -202,16 +203,16 @@ const Home = () => {
                     className="space-y-2"
                   >
                     <div className="flex justify-between">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-purple-400">{skill.level}%</span>
+                      <span className="text-foreground">{skill.name}</span>
+                      <span className="text-primary">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full"
+                        className="h-full bg-gradient-to-r from-orange-primary-500 to-orange-primary-700 rounded-full"
                       />
                     </div>
                   </motion.div>

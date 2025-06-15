@@ -61,7 +61,7 @@ const ToolsSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gray-900/30">
+    <section className="py-20 px-6 bg-muted/20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -70,10 +70,10 @@ const ToolsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-purple-400">
+          <h2 className="text-4xl font-bold mb-4 text-primary">
             {t('home.toolsTitle')}
           </h2>
-          <div className="w-24 h-1 bg-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </motion.div>
 
         <motion.div
@@ -94,11 +94,11 @@ const ToolsSection = () => {
               }}
               className="group"
             >
-              <div className="bg-gray-800/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 text-center hover:bg-gray-700/50 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-                <div className="flex justify-center mb-3 text-gray-300 group-hover:text-purple-400 transition-colors duration-300">
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 text-center hover:bg-accent/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                <div className="flex justify-center mb-3 text-muted-foreground group-hover:text-primary transition-colors duration-300">
                   {tool.icon}
                 </div>
-                <h3 className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">
+                <h3 className="text-sm font-medium text-card-foreground group-hover:text-foreground transition-colors duration-300">
                   {tool.name}
                 </h3>
               </div>
