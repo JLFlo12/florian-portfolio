@@ -40,7 +40,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              <div className="space-y-4">
+              <div className="space-y-1">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-2xl lg:text-3xl font-light tracking-[0.3em] text-muted-foreground -mt-2"
+                  className="text-2xl lg:text-3xl font-light tracking-[0.3em] text-muted-foreground"
                 >
                   GIRARDOT LAHOGUE
                 </motion.h2>
