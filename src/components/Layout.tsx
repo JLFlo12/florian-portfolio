@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -11,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useTranslation } from 'react-i18next';
+import Logo from '@/components/Logo';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,8 +41,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-              F.
+            <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
+              <Logo />
             </Link>
 
             {/* Navigation Links */}
