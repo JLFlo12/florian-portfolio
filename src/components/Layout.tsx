@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -34,21 +33,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      theme === 'dark' 
-        ? 'bg-black text-white' 
-        : 'bg-white text-gray-900'
-    }`}>
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300 ${
-        theme === 'dark'
-          ? 'bg-black/80 border-purple-500/20'
-          : 'bg-white/80 border-purple-500/20'
-      }`}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300 transition-colors">
+            <Link to="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
               F.
             </Link>
 
@@ -60,17 +51,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   to={item.path}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors ${
                     location.pathname === item.path
-                      ? 'text-purple-400'
-                      : theme === 'dark' 
-                        ? 'text-gray-300 hover:text-white'
-                        : 'text-gray-600 hover:text-gray-900'
+                      ? 'text-primary'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {item.label}
                   {location.pathname === item.path && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-400"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
                       initial={false}
                     />
                   )}
@@ -86,39 +75,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className={`transition-colors ${
-                      theme === 'dark'
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                    className="text-muted-foreground hover:text-foreground hover:bg-accent"
                   >
                     <Globe className="h-4 w-4 mr-2" />
                     {i18n.language === 'fr' ? 'FR' : 'EN'}
                     <ChevronDown className="h-3 w-3 ml-1" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className={`border transition-colors ${
-                  theme === 'dark'
-                    ? 'bg-gray-900 border-gray-700'
-                    : 'bg-white border-gray-200'
-                }`}>
+                <DropdownMenuContent className="bg-popover border-border">
                   <DropdownMenuItem 
                     onClick={() => changeLanguage('fr')}
-                    className={`cursor-pointer transition-colors ${
-                      theme === 'dark'
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                    className="text-popover-foreground hover:bg-accent cursor-pointer"
                   >
                     Français
                   </DropdownMenuItem>
                   <DropdownMenuItem 
                     onClick={() => changeLanguage('en')}
-                    className={`cursor-pointer transition-colors ${
-                      theme === 'dark'
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                    className="text-popover-foreground hover:bg-accent cursor-pointer"
                   >
                     English
                   </DropdownMenuItem>
@@ -130,11 +103,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
-                className={`transition-colors ${
-                  theme === 'dark'
-                    ? 'text-gray-300 hover:text-white hover:bg-gray-800'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className="text-muted-foreground hover:text-foreground hover:bg-accent"
               >
                 {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>

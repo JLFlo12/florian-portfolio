@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +20,20 @@ export default {
 		},
 		extend: {
 			colors: {
+				// Couleurs orange personnalisées
+				'orange-primary': {
+					50: '#fff7ed',
+					100: '#ffedd5',
+					200: '#fed7aa',
+					300: '#fdba74',
+					400: '#fb923c',
+					500: '#f97316', // Couleur principale
+					600: '#ea580c',
+					700: '#c2410c',
+					800: '#9a3412',
+					900: '#7c2d12',
+					950: '#431407',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
