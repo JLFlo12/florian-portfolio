@@ -1,14 +1,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Home = () => {
-  const { t } = useTranslation();
-
   const technicalSkills = [
     { name: 'Réseaux & GNS3', level: 85 },
     { name: 'Linux/Windows Server', level: 80 },
@@ -54,7 +51,7 @@ const Home = () => {
                   transition={{ delay: 0.4, duration: 0.8 }}
                   className="text-xl lg:text-2xl text-purple-400 font-medium"
                 >
-                  {t('home.role')}
+                  Étudiant en BUT Réseaux & Télécommunications
                 </motion.p>
               </div>
 
@@ -64,7 +61,7 @@ const Home = () => {
                 transition={{ delay: 0.6, duration: 0.8 }}
                 className="text-lg text-gray-300 max-w-md leading-relaxed"
               >
-                {t('home.bio')}
+                Étudiant passionné par les réseaux, les systèmes et la cybersécurité.
               </motion.p>
 
               <motion.div
@@ -74,7 +71,7 @@ const Home = () => {
                 className="flex items-center space-x-2 text-gray-400"
               >
                 <MapPin className="h-5 w-5" />
-                <span>{t('home.location')}</span>
+                <span>La Réunion, France</span>
               </motion.div>
 
               {/* Social Links */}
@@ -115,7 +112,7 @@ const Home = () => {
               >
                 <Link to="/projects">
                   <Button className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 text-lg">
-                    {t('home.cta')}
+                    Découvrir mes projets
                   </Button>
                 </Link>
               </motion.div>
@@ -148,7 +145,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold mb-8 text-purple-400">
-                {t('home.skillsTitle')}
+                Compétences Techniques
               </h2>
               <div className="space-y-6">
                 {technicalSkills.map((skill, index) => (
@@ -186,7 +183,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold mb-8 text-purple-400">
-                {t('home.softSkillsTitle')}
+                Soft Skills
               </h2>
               <div className="space-y-6">
                 {softSkills.map((skill, index) => (

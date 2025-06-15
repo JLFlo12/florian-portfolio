@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
@@ -12,19 +11,14 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr');
-  };
-
   const navItems = [
-    { path: '/', label: t('nav.home') },
-    { path: '/projects', label: t('nav.projects') },
-    { path: '/about', label: t('nav.about') },
-    { path: '/contact', label: t('nav.contact') }
+    { path: '/', label: 'Accueil' },
+    { path: '/projects', label: 'Projets' },
+    { path: '/about', label: 'À propos' },
+    { path: '/contact', label: 'Contact' }
   ];
 
   return (
@@ -62,16 +56,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               ))}
             </div>
 
-            {/* Theme & Language Toggle */}
+            {/* Theme Toggle */}
             <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleLanguage}
-                className="text-gray-300 hover:text-white"
-              >
-                {i18n.language.toUpperCase()}
-              </Button>
               <Button
                 variant="ghost"
                 size="sm"

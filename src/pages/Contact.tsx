@@ -1,31 +1,28 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Contact = () => {
-  const { t } = useTranslation();
-
   const contactMethods = [
     {
       icon: Mail,
-      label: t('contact.email'),
+      label: 'Email',
       value: 'florian.exemple@gmail.com',
       href: 'mailto:florian.exemple@gmail.com',
       color: 'text-purple-400'
     },
     {
       icon: Github,
-      label: t('contact.github'),
+      label: 'GitHub',
       value: 'github.com/florian-dev',
       href: 'https://github.com/florian-dev',
       color: 'text-gray-400'
     },
     {
       icon: Linkedin,
-      label: t('contact.linkedin'),
+      label: 'LinkedIn',
       value: 'linkedin.com/in/florian-reseaux',
       href: 'https://linkedin.com/in/florian-reseaux',
       color: 'text-blue-400'
@@ -49,10 +46,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h1 className="text-6xl lg:text-8xl font-black mb-4">
-            {t('contact.title')}
+            Contact
           </h1>
           <p className="text-xl text-gray-400">
-            {t('contact.subtitle')}
+            Discutons de vos projets
           </p>
           <div className="w-24 h-1 bg-purple-400 mx-auto mt-6"></div>
         </motion.div>
