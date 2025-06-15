@@ -1,9 +1,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
+import { ExternalLink } from 'lucide-react';
+import { createProjectId } from '@/data/projectGalleries';
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -86,6 +89,62 @@ const Projects = () => {
     }
   ];
 
+  const ProjectCard = ({ project, index, delay = 0 }: { project: any, index: number, delay?: number }) => {
+    const projectId = createProjectId(project.title);
+    
+    return (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: index * 0.1 + delay }}
+        whileHover={{ scale: 1.02, y: -5 }}
+        className="group"
+      >
+        <Link to={`/projects/${projectId}`} className="block h-full">
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full cursor-pointer group-hover:shadow-lg">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <CardTitle className="text-card-foreground group-hover:text-primary transition-colors pr-2">
+                  {project.title}
+                </CardTitle>
+                <div className="flex items-center space-x-2 flex-shrink-0">
+                  <Badge 
+                    variant="outline" 
+                    className={project.status === 'completed' 
+                      ? "bg-green-600/20 text-green-400 border-green-500/50" 
+                      : "bg-orange-600/20 text-orange-400 border-orange-500/50"
+                    }
+                  >
+                    {project.status === 'completed' ? '✓' : '⏳'}
+                  </Badge>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+              </div>
+              <CardDescription className="text-muted-foreground">
+                {/* @ts-ignore */}
+                {project.description[t('lng') === 'en' ? 'en' : 'fr']}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech: string) => (
+                  <Badge
+                    key={tech}
+                    variant="secondary"
+                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
+      </motion.div>
+    );
+  };
+
   return (
     <div className="min-h-screen px-6 py-20 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -113,44 +172,7 @@ const Projects = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {completedProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="group"
-              >
-                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </CardTitle>
-                      <Badge variant="outline" className="bg-green-600/20 text-green-400 border-green-500/50">
-                        ✓
-                      </Badge>
-                    </div>
-                    <CardDescription className="text-muted-foreground">
-                      {/* @ts-ignore */}
-                      {project.description[t('lng') === 'en' ? 'en' : 'fr']}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
         </motion.div>
@@ -166,44 +188,7 @@ const Projects = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {inProgressProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
-                whileHover={{ scale: 1.02 }}
-                className="group"
-              >
-                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </CardTitle>
-                      <Badge variant="outline" className="bg-orange-primary-600/20 text-orange-primary-400 border-orange-primary-500/50">
-                        ⏳
-                      </Badge>
-                    </div>
-                    <CardDescription className="text-muted-foreground">
-                      {/* @ts-ignore */}
-                      {project.description[t('lng') === 'en' ? 'en' : 'fr']}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <ProjectCard key={index} project={project} index={index} delay={0.4} />
             ))}
           </div>
         </motion.div>

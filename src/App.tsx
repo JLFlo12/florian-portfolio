@@ -10,6 +10,7 @@ import i18n from '@/i18n/config';
 import Layout from "@/components/Layout";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import ProjectGallery from "./pages/ProjectGallery";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:projectId" element={<ProjectGallery />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
