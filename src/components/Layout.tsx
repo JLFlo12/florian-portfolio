@@ -34,9 +34,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black dark:bg-black text-white dark:text-white transition-colors duration-300">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      theme === 'dark' 
+        ? 'bg-black text-white' 
+        : 'bg-white text-gray-900'
+    }`}>
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 dark:bg-black/80 backdrop-blur-md border-b border-purple-500/20">
+      <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300 ${
+        theme === 'dark'
+          ? 'bg-black/80 border-purple-500/20'
+          : 'bg-white/80 border-purple-500/20'
+      }`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -53,7 +61,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   className={`relative px-4 py-2 text-sm font-medium transition-colors ${
                     location.pathname === item.path
                       ? 'text-purple-400'
-                      : 'text-gray-300 hover:text-white'
+                      : theme === 'dark' 
+                        ? 'text-gray-300 hover:text-white'
+                        : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item.label}
@@ -76,23 +86,39 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-gray-300 hover:text-white hover:bg-gray-800"
+                    className={`transition-colors ${
+                      theme === 'dark'
+                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                   >
                     <Globe className="h-4 w-4 mr-2" />
                     {i18n.language === 'fr' ? 'FR' : 'EN'}
                     <ChevronDown className="h-3 w-3 ml-1" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-gray-900 border-gray-700">
+                <DropdownMenuContent className={`border transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-gray-900 border-gray-700'
+                    : 'bg-white border-gray-200'
+                }`}>
                   <DropdownMenuItem 
                     onClick={() => changeLanguage('fr')}
-                    className="text-gray-300 hover:text-white hover:bg-gray-800 cursor-pointer"
+                    className={`cursor-pointer transition-colors ${
+                      theme === 'dark'
+                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                   >
                     Français
                   </DropdownMenuItem>
                   <DropdownMenuItem 
                     onClick={() => changeLanguage('en')}
-                    className="text-gray-300 hover:text-white hover:bg-gray-800 cursor-pointer"
+                    className={`cursor-pointer transition-colors ${
+                      theme === 'dark'
+                        ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                   >
                     English
                   </DropdownMenuItem>
@@ -104,7 +130,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
-                className="text-gray-300 hover:text-white hover:bg-gray-800"
+                className={`transition-colors ${
+                  theme === 'dark'
+                    ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
               >
                 {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
