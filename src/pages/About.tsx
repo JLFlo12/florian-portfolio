@@ -34,29 +34,29 @@ const About = () => {
           
           <div className="grid md:grid-cols-2 gap-12 mt-16">
             <div>
-              <h2 className="text-3xl font-bold text-primary mb-6">Formation</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6">{t('about.educationTitle')}</h2>
               <div className="space-y-4">
                 <div className="border-l-4 border-primary pl-6">
-                  <h3 className="text-xl font-semibold text-foreground">BUT Réseaux & Télécommunications</h3>
-                  <p className="text-muted-foreground">En cours - Spécialisation en cybersécurité et administration réseau</p>
+                  <h3 className="text-xl font-semibold text-foreground">{t('about.educationDegree')}</h3>
+                  <p className="text-muted-foreground">{t('about.educationDescription')}</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-primary mb-6">Expertise</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6">{t('about.expertiseTitle')}</h2>
               <div className="space-y-4 text-muted-foreground">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Réseaux</h3>
-                  <p>Configuration et administration de réseaux d'entreprise, VLAN, routage dynamique et statique</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.networkTitle')}</h3>
+                  <p>{t('about.networkDescription')}</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Systèmes</h3>
-                  <p>Administration Linux/Windows Server, virtualisation, conteneurisation</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.systemsTitle')}</h3>
+                  <p>{t('about.systemsDescription')}</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Cybersécurité</h3>
-                  <p>Analyse de vulnérabilités, hardening système, sensibilisation aux bonnes pratiques</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.cybersecurityTitle')}</h3>
+                  <p>{t('about.cybersecurityDescription')}</p>
                 </div>
               </div>
             </div>

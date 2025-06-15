@@ -35,7 +35,17 @@ const resources = {
         intro: 'Étudiant passionné par les technologies réseau et la cybersécurité',
         cvTitle: 'Mon CV',
         downloadCV: 'Télécharger mon CV',
-        viewCV: 'Visualiser en ligne'
+        viewCV: 'Visualiser en ligne',
+        educationTitle: 'Formation',
+        educationDegree: 'BUT Réseaux & Télécommunications',
+        educationDescription: 'En cours - Spécialisation en cybersécurité et administration réseau',
+        expertiseTitle: 'Expertise',
+        networkTitle: 'Réseaux',
+        networkDescription: 'Configuration et administration de réseaux d\'entreprise, VLAN, routage dynamique et statique',
+        systemsTitle: 'Systèmes',
+        systemsDescription: 'Administration Linux/Windows Server, virtualisation, conteneurisation',
+        cybersecurityTitle: 'Cybersécurité',
+        cybersecurityDescription: 'Analyse de vulnérabilités, hardening système, sensibilisation aux bonnes pratiques'
       },
       // Contact page
       contact: {
@@ -79,7 +89,17 @@ const resources = {
         intro: 'Student passionate about network technologies and cybersecurity',
         cvTitle: 'My Resume',
         downloadCV: 'Download my Resume',
-        viewCV: 'View online'
+        viewCV: 'View online',
+        educationTitle: 'Education',
+        educationDegree: 'B.Tech Networks & Telecommunications',
+        educationDescription: 'In progress - Specializing in cybersecurity and network administration',
+        expertiseTitle: 'Expertise',
+        networkTitle: 'Networks',
+        networkDescription: 'Enterprise network configuration and administration, VLAN, dynamic and static routing',
+        systemsTitle: 'Systems',
+        systemsDescription: 'Linux/Windows Server administration, virtualization, containerization',
+        cybersecurityTitle: 'Cybersecurity',
+        cybersecurityDescription: 'Vulnerability analysis, system hardening, best practices awareness'
       },
       // Contact page
       contact: {
