@@ -17,102 +17,54 @@ const Logo = () => {
         xmlns="http://www.w3.org/2000/svg"
         className="text-primary"
       >
-        {/* Console/Gaming device outline */}
+        {/* F stylisé avec des formes géométriques */}
+        {/* Barre verticale principale */}
         <rect
-          x="4"
-          y="12"
-          width="32"
-          height="20"
-          rx="4"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
+          x="8"
+          y="8"
+          width="3"
+          height="24"
+          fill="currentColor"
         />
         
-        {/* Screen */}
-        <rect
-          x="16"
-          y="16"
-          width="8"
-          height="6"
-          rx="1"
+        {/* Barre horizontale du haut - forme trapézoïdale */}
+        <path
+          d="M11 8 L28 8 L26 12 L11 12 Z"
+          fill="currentColor"
+        />
+        
+        {/* Barre horizontale du milieu - plus courte et décalée */}
+        <path
+          d="M11 18 L22 18 L20 22 L11 22 Z"
+          fill="currentColor"
+        />
+        
+        {/* Détails géométriques pour le style atypique */}
+        {/* Petit triangle décoratif */}
+        <path
+          d="M28 8 L32 12 L28 12 Z"
+          fill="currentColor"
+          opacity="0.7"
+        />
+        
+        {/* Point décoratif */}
+        <circle
+          cx="24"
+          cy="20"
+          r="1.5"
           fill="currentColor"
           opacity="0.8"
         />
         
-        {/* Left controls - D-pad */}
-        <circle
-          cx="10"
-          cy="20"
-          r="1.5"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        <rect
-          x="9"
-          y="18"
-          width="2"
-          height="4"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        <rect
-          x="8"
-          y="19"
-          width="4"
-          height="2"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        
-        {/* Right controls - Action buttons */}
-        <circle
-          cx="29"
-          cy="18"
-          r="1"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        <circle
-          cx="31"
-          cy="20"
-          r="1"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        <circle
-          cx="29"
-          cy="22"
-          r="1"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        <circle
-          cx="27"
-          cy="20"
-          r="1"
-          fill="currentColor"
-          opacity="0.6"
-        />
-        
-        {/* Code brackets for dev aspect */}
-        <path
-          d="M6 8 L4 10 L6 12"
+        {/* Ligne fine décorative */}
+        <line
+          x1="8"
+          y1="32"
+          x2="16"
+          y2="32"
           stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          opacity="0.7"
-        />
-        <path
-          d="M34 8 L36 10 L34 12"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          opacity="0.7"
+          strokeWidth="1"
+          opacity="0.6"
         />
       </svg>
     </motion.div>
