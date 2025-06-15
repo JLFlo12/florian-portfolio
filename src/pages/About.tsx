@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="max-w-4xl mx-auto">
@@ -13,7 +16,7 @@ const About = () => {
           className="text-center mb-16"
         >
           <h1 className="text-6xl lg:text-8xl font-black mb-4">
-            À Propos
+            {t('about.title')}
           </h1>
           <div className="w-24 h-1 bg-purple-400 mx-auto"></div>
         </motion.div>
@@ -25,7 +28,7 @@ const About = () => {
           className="prose prose-lg prose-invert max-w-none"
         >
           <p className="text-xl text-gray-300 leading-relaxed mb-8">
-            Étudiant passionné par les technologies réseau et la cybersécurité
+            {t('about.intro')}
           </p>
           
           <div className="grid md:grid-cols-2 gap-12 mt-16">

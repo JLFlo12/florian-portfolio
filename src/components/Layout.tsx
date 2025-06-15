@@ -2,9 +2,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Globe, ChevronDown } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useTranslation } from 'react-i18next';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,13 +20,18 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   const navItems = [
-    { path: '/', label: 'Accueil' },
-    { path: '/projects', label: 'Projets' },
-    { path: '/about', label: 'À propos' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/', label: t('nav.home') },
+    { path: '/projects', label: t('nav.projects') },
+    { path: '/about', label: t('nav.about') },
+    { path: '/contact', label: t('nav.contact') }
   ];
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div className="min-h-screen bg-black dark:bg-black text-white dark:text-white transition-colors duration-300">
@@ -56,13 +68,43 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               ))}
             </div>
 
-            {/* Theme Toggle */}
+            {/* Controls */}
             <div className="flex items-center space-x-4">
+              {/* Language Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-gray-300 hover:text-white hover:bg-gray-800"
+                  >
+                    <Globe className="h-4 w-4 mr-2" />
+                    {i18n.language === 'fr' ? 'FR' : 'EN'}
+                    <ChevronDown className="h-3 w-3 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-gray-900 border-gray-700">
+                  <DropdownMenuItem 
+                    onClick={() => changeLanguage('fr')}
+                    className="text-gray-300 hover:text-white hover:bg-gray-800 cursor-pointer"
+                  >
+                    Français
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => changeLanguage('en')}
+                    className="text-gray-300 hover:text-white hover:bg-gray-800 cursor-pointer"
+                  >
+                    English
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Theme Toggle */}
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-300 hover:text-white hover:bg-gray-800"
               >
                 {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
