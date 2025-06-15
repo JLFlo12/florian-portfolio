@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
@@ -11,22 +12,22 @@ const Contact = () => {
     {
       icon: Mail,
       label: t('contact.email'),
-      value: 'florian.exemple@gmail.com',
-      href: 'mailto:florian.exemple@gmail.com',
+      value: 'f.girardot--lahogue@rt-iut.re',
+      href: 'mailto:f.girardot--lahogue@rt-iut.re',
       color: 'text-purple-400'
     },
     {
       icon: Github,
       label: t('contact.github'),
-      value: 'github.com/florian-dev',
-      href: 'https://github.com/florian-dev',
+      value: 'github.com/JLFlo12',
+      href: 'https://github.com/JLFlo12',
       color: 'text-gray-400'
     },
     {
       icon: Linkedin,
       label: t('contact.linkedin'),
-      value: 'linkedin.com/in/florian-reseaux',
-      href: 'https://linkedin.com/in/florian-reseaux',
+      value: 'linkedin.com/in/florian-girardot-lahogue-4aa367341',
+      href: 'https://www.linkedin.com/in/florian-girardot-lahogue-4aa367341/',
       color: 'text-blue-400'
     },
     {
@@ -109,7 +110,7 @@ const Contact = () => {
               N'hésitez pas à me contacter pour discuter de vos projets ou opportunités.
             </p>
             <a
-              href="mailto:florian.exemple@gmail.com"
+              href="mailto:f.girardot--lahogue@rt-iut.re"
               className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg transition-colors"
             >
               <Mail className="h-5 w-5" />
