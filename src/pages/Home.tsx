@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -62,6 +63,7 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
                   className="text-xl lg:text-2xl text-primary font-medium"
+                  style={{ textShadow: '0 0 10px rgba(249, 115, 22, 0.3)' }}
                 >
                   {t('home.role')}
                 </motion.p>
