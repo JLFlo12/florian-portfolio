@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -50,6 +49,14 @@ const Home = () => {
                 >
                   FLORIAN
                 </motion.h1>
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-2xl lg:text-3xl font-light tracking-[0.3em] text-muted-foreground -mt-2"
+                >
+                  GIRARDOT LAHOGUE
+                </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
