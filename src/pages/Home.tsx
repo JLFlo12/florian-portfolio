@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import ToolsSection from '@/components/ToolsSection';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -135,6 +135,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Tools Section */}
+      <ToolsSection />
 
       {/* Skills Section */}
       <section className="py-20 px-6 bg-gray-900/50">

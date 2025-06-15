@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -19,7 +18,8 @@ const resources = {
         location: 'La Réunion, France',
         cta: 'Découvrir mes projets',
         skillsTitle: 'Compétences Techniques',
-        softSkillsTitle: 'Soft Skills'
+        softSkillsTitle: 'Soft Skills',
+        toolsTitle: 'Outils que j\'utilise'
       },
       // Projects page
       projects: {
@@ -59,7 +59,8 @@ const resources = {
         location: 'La Réunion, France',
         cta: 'Discover my projects',
         skillsTitle: 'Technical Skills',
-        softSkillsTitle: 'Soft Skills'
+        softSkillsTitle: 'Soft Skills',
+        toolsTitle: 'My Tools'
       },
       // Projects page
       projects: {
