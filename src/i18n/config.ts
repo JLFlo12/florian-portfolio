@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -31,7 +32,10 @@ const resources = {
       // About page
       about: {
         title: 'À Propos',
-        intro: 'Étudiant passionné par les technologies réseau et la cybersécurité'
+        intro: 'Étudiant passionné par les technologies réseau et la cybersécurité',
+        cvTitle: 'Mon CV',
+        downloadCV: 'Télécharger mon CV',
+        viewCV: 'Visualiser en ligne'
       },
       // Contact page
       contact: {
@@ -72,7 +76,10 @@ const resources = {
       // About page
       about: {
         title: 'About',
-        intro: 'Student passionate about network technologies and cybersecurity'
+        intro: 'Student passionate about network technologies and cybersecurity',
+        cvTitle: 'My Resume',
+        downloadCV: 'Download my Resume',
+        viewCV: 'View online'
       },
       // Contact page
       contact: {

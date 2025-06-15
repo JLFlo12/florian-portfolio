@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { Download, FileText } from 'lucide-react';
 
 const About = () => {
   const { t } = useTranslation();
@@ -60,6 +61,36 @@ const About = () => {
               </div>
             </div>
           </div>
+
+          {/* CV Download Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 text-center"
+          >
+            <h2 className="text-3xl font-bold text-purple-400 mb-8">{t('about.cvTitle')}</h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/mon-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+              >
+                <Download className="h-5 w-5" />
+                {t('about.downloadCV')}
+              </a>
+              <a
+                href="/mon-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-transparent border-2 border-purple-400 hover:bg-purple-400 text-purple-400 hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                <FileText className="h-5 w-5" />
+                {t('about.viewCV')}
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
