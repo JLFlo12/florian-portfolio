@@ -70,7 +70,7 @@ const Logo = () => {
         </svg>
       </div>
       <div className="text-xl font-bold text-foreground">
-        My Portfolio - Florian
+        Florian
       </div>
     </motion.div>
   );
