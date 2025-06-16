@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 
 const RotatingGlobe = () => {
   return (
-    <div className="relative w-[500px] h-[500px] flex items-center justify-center">
+    <motion.div 
+      className="relative w-[500px] h-[500px] flex items-center justify-center cursor-pointer"
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
       {/* Main globe container - further enlarged */}
       <motion.div
         className="relative w-[450px] h-[450px]"
@@ -126,7 +130,7 @@ const RotatingGlobe = () => {
           scale: { duration: 2.5, repeat: Infinity, delay: 1 }
         }}
       />
-    </div>
+    </motion.div>
   );
 };
 
