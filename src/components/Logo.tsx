@@ -69,9 +69,6 @@ const Logo = () => {
           />
         </svg>
       </div>
-      <div className="text-xl font-bold text-foreground">
-        Florian
-      </div>
     </motion.div>
   );
 };
