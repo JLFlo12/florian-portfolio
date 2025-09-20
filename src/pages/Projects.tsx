@@ -130,7 +130,7 @@ const Projects = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech: string) => (
                   <Badge
                     key={tech}
@@ -141,6 +141,20 @@ const Projects = () => {
                   </Badge>
                 ))}
               </div>
+              {project.canvaLink && (
+                <div className="mt-4 pt-4 border-t border-border">
+                  <a 
+                    href={project.canvaLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="h-3 w-3 mr-1" />
+                    Voir sur Canva
+                  </a>
+                </div>
+              )}
             </CardContent>
           </Card>
         </Link>
