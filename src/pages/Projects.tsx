@@ -49,7 +49,8 @@ const Projects = () => {
         en: 'First personal portfolio website using HTML/CSS/JS'
       },
       status: 'completed',
-      technologies: ['HTML', 'CSS', 'JavaScript']
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      portfolioLink: 'https://florian-sooty.vercel.app/'
     },
     {
       title: 'Réseau pour petite entreprise (GNS3)',
@@ -152,6 +153,20 @@ const Projects = () => {
                   >
                     <ExternalLink className="h-3 w-3 mr-1" />
                     Voir sur Canva
+                  </a>
+                </div>
+              )}
+              {project.portfolioLink && (
+                <div className="mt-4 pt-4 border-t border-border">
+                  <a 
+                    href={project.portfolioLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="h-3 w-3 mr-1" />
+                    Voir le portfolio V1
                   </a>
                 </div>
               )}
