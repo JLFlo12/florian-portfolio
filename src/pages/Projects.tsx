@@ -19,7 +19,8 @@ const Projects = () => {
         en: 'Awareness training on cybersecurity and IT hygiene best practices'
       },
       status: 'completed',
-      technologies: ['Sécurité', 'Formation']
+      technologies: ['Sécurité', 'Formation'],
+      canvaLink: 'https://www.canva.com/design/DAGR75eU94c/lgzMFgPQ42BKlzcXY9N0mw/view'
     },
     {
       title: 'Pilotage de LED avec Raspberry Pi',
@@ -28,7 +29,8 @@ const Projects = () => {
         en: 'Remote LED control using a Raspberry Pi and a web interface'
       },
       status: 'completed',
-      technologies: ['Raspberry Pi', 'Python', 'GPIO']
+      technologies: ['Raspberry Pi', 'Python', 'GPIO'],
+      canvaLink: 'https://www.canva.com/design/DAGdTMt714c/HsmxLn-e2kNvwDFtxLDwhg/edit'
     },
     {
       title: 'Analyse de transmission WiFi',
@@ -37,7 +39,8 @@ const Projects = () => {
         en: 'Measuring WiFi signal strength using WiFi Analyzer'
       },
       status: 'completed',
-      technologies: ['WiFi', 'Analyse', 'Documentation']
+      technologies: ['WiFi', 'Analyse', 'Documentation'],
+      canvaLink: 'https://www.canva.com/design/DAGdsXFIEP0/vEx7owRuxu67lumBODcDQg/edit?utm_content=DAGdsXFIEP0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'
     },
     {
       title: 'Création d\'un portfolio personnel',
@@ -47,17 +50,14 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['HTML', 'CSS', 'JavaScript']
-    }
-  ];
-
-  const inProgressProjects = [
+    },
     {
       title: 'Réseau pour petite entreprise (GNS3)',
       description: {
         fr: 'Conception d\'une infrastructure réseau complète dans GNS3 avec routage, VLAN, NAT, etc.',
         en: 'Building a full small-business network in GNS3 (VLAN, routing, NAT...)'
       },
-      status: 'in-progress',
+      status: 'completed',
       technologies: ['GNS3', 'VLAN', 'Routage', 'NAT']
     },
     {
@@ -66,8 +66,9 @@ const Projects = () => {
         fr: 'Analyse de signaux physiques à l\'oscilloscope, calcul de fréquence et d\'amplitude',
         en: 'Signal analysis with oscilloscope, frequency and amplitude measurement'
       },
-      status: 'in-progress',
-      technologies: ['Oscilloscope', 'Analyse', 'Signaux']
+      status: 'completed',
+      technologies: ['Oscilloscope', 'Analyse', 'Signaux'],
+      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit'
     },
     {
       title: 'Projet intégratif : Topologie centralisée + succursale (GNS3)',
@@ -75,8 +76,9 @@ const Projects = () => {
         fr: 'Réseau GNS3 simulant un site principal et une succursale interconnectée',
         en: 'Simulated GNS3 network with a main site and a remote branch'
       },
-      status: 'in-progress',
-      technologies: ['GNS3', 'Topologie', 'Interconnexion']
+      status: 'completed',
+      technologies: ['GNS3', 'Topologie', 'Interconnexion'],
+      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit'
     },
     {
       title: 'Création d\'un site web de suivi de commande',
@@ -84,8 +86,9 @@ const Projects = () => {
         fr: 'Développement d\'une web app permettant la gestion et le suivi de commandes, triées par statut, type et fournisseur',
         en: 'Order tracking web app with filtering by status, type, and supplier'
       },
-      status: 'in-progress',
-      technologies: ['React', 'TypeScript', 'Base de données']
+      status: 'completed',
+      technologies: ['React', 'TypeScript', 'Base de données'],
+      canvaLink: 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit'
     }
   ];
 
@@ -177,21 +180,6 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        {/* In Progress Projects */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h2 className="text-4xl font-bold text-primary mb-8">
-            {t('projects.inProgress')}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {inProgressProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} delay={0.4} />
-            ))}
-          </div>
-        </motion.div>
       </div>
     </div>
   );

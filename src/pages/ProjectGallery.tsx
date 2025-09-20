@@ -8,11 +8,22 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
 import { getProjectGallery } from '@/data/projectGalleries';
 
+// Liens Canva pour chaque projet
+const canvaLinks: { [key: string]: string } = {
+  'hygiene-cybersecurite': 'https://www.canva.com/design/DAGR75eU94c/lgzMFgPQ42BKlzcXY9N0mw/view',
+  'pilotage-de-led-avec-raspberry-pi': 'https://www.canva.com/design/DAGdTMt714c/HsmxLn-e2kNvwDFtxLDwhg/edit',
+  'analyse-de-transmission-wifi': 'https://www.canva.com/design/DAGdsXFIEP0/vEx7owRuxu67lumBODcDQg/edit?utm_content=DAGdsXFIEP0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
+  'mesure-et-caracterisation-dun-signal': 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
+  'projet-integratif--topologie-centralisee--succursale-gns3': 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
+  'creation-dun-site-web-de-suivi-de-commande': 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit'
+};
+
 const ProjectGallery = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const { t } = useTranslation();
   
   const gallery = projectId ? getProjectGallery(projectId) : undefined;
+  const canvaLink = projectId ? canvaLinks[projectId] : undefined;
 
   if (!gallery) {
     return (
@@ -55,7 +66,33 @@ const ProjectGallery = () => {
           <h1 className="text-4xl lg:text-6xl font-black mb-4 text-foreground">
             {gallery.projectTitle}
           </h1>
-          <div className="w-24 h-1 bg-primary"></div>
+          <div className="w-24 h-1 bg-primary mb-6"></div>
+          
+          {/* Lien Canva si disponible */}
+          {canvaLink && (
+            <div className="mb-8">
+              <a 
+                href={canvaLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Voir sur Canva
+                </Button>
+              </a>
+              
+              {/* Intégration Canva optionnelle */}
+              <div className="mt-6">
+                <iframe
+                  src={canvaLink.replace('/edit', '/view').replace('/view', '/view?embed')}
+                  className="w-full h-96 border border-border rounded-lg"
+                  title={gallery.projectTitle}
+                />
+              </div>
+            </div>
+          )}
         </motion.div>
 
         {/* Galerie de photos */}
