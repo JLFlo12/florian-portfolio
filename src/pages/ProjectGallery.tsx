@@ -2,11 +2,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
-import { getProjectGallery } from '@/data/projectGalleries';
+import { getProjectGallery, ProjectFile } from '@/data/projectGalleries';
 
 // Liens Canva pour chaque projet
 const canvaLinks: { [key: string]: string } = {
@@ -24,6 +24,71 @@ const ProjectGallery = () => {
   
   const gallery = projectId ? getProjectGallery(projectId) : undefined;
   const canvaLink = projectId ? canvaLinks[projectId] : undefined;
+
+  // Fonction pour obtenir l'icône selon le type de fichier
+  const getFileIcon = (type: string) => {
+    switch (type) {
+      case 'html':
+        return <FileText className="h-5 w-5" />;
+      case 'css':
+        return <Palette className="h-5 w-5" />;
+      case 'js':
+        return <Code className="h-5 w-5" />;
+      default:
+        return <FileText className="h-5 w-5" />;
+    }
+  };
+
+  // Composant pour afficher un fichier
+  const FileCard = ({ file, index }: { file: ProjectFile; index: number }) => (
+    <motion.div
+      key={file.id}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="group cursor-pointer"
+    >
+      <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+        <CardContent className="p-6">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="text-primary">
+                {getFileIcon(file.type)}
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors">
+                  {file.title}
+                </h3>
+                {file.description && (
+                  <p className="text-muted-foreground text-sm mt-1">
+                    {file.description}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="flex space-x-2">
+              <a 
+                href={file.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+              >
+                <ExternalLink className="h-4 w-4" />
+              </a>
+              <a 
+                href={file.url} 
+                download
+                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+              >
+                <Download className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
 
   if (!gallery) {
     return (
@@ -95,8 +160,36 @@ const ProjectGallery = () => {
           )}
         </motion.div>
 
+        {/* Section des fichiers si disponibles */}
+        {gallery.files && gallery.files.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-8 text-foreground">
+              Fichiers du projet
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {gallery.files.map((file, index) => (
+                <FileCard key={file.id} file={file} index={index} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Galerie de photos */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mb-12"
+        >
+          <h2 className="text-3xl font-bold mb-8 text-foreground">
+            Images du projet
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {gallery.images.map((image, index) => (
             <motion.div
               key={image.id}
@@ -135,10 +228,11 @@ const ProjectGallery = () => {
               </Card>
             </motion.div>
           ))}
-        </div>
+          </div>
+        </motion.div>
 
         {/* Message si pas d'images */}
-        {gallery.images.length === 0 && (
+        {gallery.images.length === 0 && (!gallery.files || gallery.files.length === 0) && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -146,7 +240,7 @@ const ProjectGallery = () => {
             className="text-center py-16"
           >
             <p className="text-muted-foreground text-lg">
-              Aucune image disponible pour ce projet.
+              Aucun contenu disponible pour ce projet.
             </p>
           </motion.div>
         )}

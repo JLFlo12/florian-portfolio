@@ -9,10 +9,19 @@ export interface ProjectImage {
   description?: string;
 }
 
+export interface ProjectFile {
+  id: string;
+  url: string;
+  title: string;
+  description?: string;
+  type: 'html' | 'css' | 'js' | 'image';
+}
+
 export interface ProjectGallery {
   projectId: string;
   projectTitle: string;
   images: ProjectImage[];
+  files?: ProjectFile[];
 }
 
 export const projectGalleries: ProjectGallery[] = [
@@ -83,20 +92,63 @@ export const projectGalleries: ProjectGallery[] = [
     ]
   },
   {
-    projectId: 'portfolio-personnel',
+    projectId: 'creation-dun-portfolio-personnel',
     projectTitle: 'Création d\'un portfolio personnel',
     images: [
       {
         id: '1',
-        url: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=800&h=600&fit=crop',
-        title: 'Design initial',
-        description: 'Maquettes et wireframes'
+        url: '/portfolio-v1/images/pfp.jpg',
+        title: 'Photo de profil',
+        description: 'Photo utilisée dans le portfolio V1'
       },
       {
         id: '2',
-        url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop',
-        title: 'Développement',
-        description: 'Code HTML/CSS/JavaScript'
+        url: '/portfolio-v1/images/hacker.jpg',
+        title: 'Image thématique',
+        description: 'Image d\'ambiance cybersécurité'
+      },
+      {
+        id: '3',
+        url: '/portfolio-v1/images/raspberry.jpg',
+        title: 'Raspberry Pi',
+        description: 'Photo du Raspberry Pi utilisé dans les projets'
+      }
+    ],
+    files: [
+      {
+        id: '1',
+        url: '/portfolio-v1/index.html',
+        title: 'Page d\'accueil (index.html)',
+        description: 'Page principale du portfolio V1',
+        type: 'html'
+      },
+      {
+        id: '2',
+        url: '/portfolio-v1/cv.html',
+        title: 'Page CV (cv.html)',
+        description: 'Page curriculum vitae détaillé',
+        type: 'html'
+      },
+      {
+        id: '3',
+        url: '/portfolio-v1/style.css',
+        title: 'Feuille de style (style.css)',
+        description: 'Styles CSS du portfolio',
+        type: 'css'
+      },
+      {
+        id: '4',
+        url: '/portfolio-v1/script.js',
+        title: 'Script JavaScript (script.js)',
+        description: 'Fonctionnalités interactives (mode sombre, traduction)',
+        type: 'js'
+      },
+      {
+        id: '5',
+        url: '/portfolio-v1/TEST.html',
+        title: 'Test mode jour/nuit (TEST.html)',
+        description: 'Page de test pour le basculement jour/nuit',
+        type: 'html'
       }
     ]
   },
