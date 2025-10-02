@@ -15,7 +15,7 @@ const resources = {
       // Home page
       home: {
         role: 'Étudiant en BUT Réseaux & Télécommunications',
-        bio: 'Étudiant passionné par les réseaux, les systèmes et la cybersécurité.',
+        bio: 'Étudiant passionné par l\'informatique, le développement et la cyber.',
         location: 'La Réunion, France',
         cta: 'Découvrir mes projets',
         skillsTitle: 'Compétences Techniques',
@@ -91,7 +91,7 @@ const resources = {
       // Home page
       home: {
         role: 'Student in Networks & Telecommunications',
-        bio: 'Networking, systems and cybersecurity enthusiast.',
+        bio: 'Computer science, development and cybersecurity enthusiast.',
         location: 'La Réunion, France',
         cta: 'Discover my projects',
         skillsTitle: 'Technical Skills',
