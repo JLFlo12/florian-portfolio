@@ -20,7 +20,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['Sécurité', 'Formation'],
-      canvaLink: 'https://www.canva.com/design/DAGR75eU94c/lgzMFgPQ42BKlzcXY9N0mw/view'
+      canvaLink: 'https://www.canva.com/design/DAGR75eU94c/lgzMFgPQ42BKlzcXY9N0mw/view',
+      thumbnail: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop'
     },
     {
       title: 'Pilotage de LED avec Raspberry Pi',
@@ -30,7 +31,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['Raspberry Pi', 'Python', 'GPIO'],
-      canvaLink: 'https://www.canva.com/design/DAGdTMt714c/HsmxLn-e2kNvwDFtxLDwhg/edit'
+      canvaLink: 'https://www.canva.com/design/DAGdTMt714c/HsmxLn-e2kNvwDFtxLDwhg/edit',
+      thumbnail: '/portfolio-v1/images/raspberry.jpg'
     },
     {
       title: 'Analyse de transmission WiFi',
@@ -40,7 +42,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['WiFi', 'Analyse', 'Documentation'],
-      canvaLink: 'https://www.canva.com/design/DAGdsXFIEP0/vEx7owRuxu67lumBODcDQg/edit?utm_content=DAGdsXFIEP0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'
+      canvaLink: 'https://www.canva.com/design/DAGdsXFIEP0/vEx7owRuxu67lumBODcDQg/edit?utm_content=DAGdsXFIEP0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
+      thumbnail: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=400&h=300&fit=crop'
     },
     {
       title: 'Création d\'un portfolio personnel',
@@ -50,7 +53,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      portfolioLink: 'https://florian-sooty.vercel.app/'
+      portfolioLink: 'https://florian-sooty.vercel.app/',
+      thumbnail: '/portfolio-v1/images/pfp.jpg'
     },
     {
       title: 'Réseau pour petite entreprise (GNS3)',
@@ -59,7 +63,8 @@ const Projects = () => {
         en: 'Building a full small-business network in GNS3 (VLAN, routing, NAT...)'
       },
       status: 'completed',
-      technologies: ['GNS3', 'VLAN', 'Routage', 'NAT']
+      technologies: ['GNS3', 'VLAN', 'Routage', 'NAT'],
+      thumbnail: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop'
     },
     {
       title: 'Mesure et caractérisation d\'un signal',
@@ -69,7 +74,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['Oscilloscope', 'Analyse', 'Signaux'],
-      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit'
+      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
+      thumbnail: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop'
     },
     {
       title: 'Projet intégratif : Topologie centralisée + succursale (GNS3)',
@@ -79,7 +85,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['GNS3', 'Topologie', 'Interconnexion'],
-      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit'
+      canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
+      thumbnail: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop'
     },
     {
       title: 'Création d\'un site web de suivi de commande',
@@ -89,7 +96,8 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['React', 'TypeScript', 'Base de données'],
-      canvaLink: 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit'
+      canvaLink: 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit',
+      thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop'
     }
   ];
 
@@ -106,7 +114,16 @@ const Projects = () => {
         className="group"
       >
         <Link to={`/projects/${projectId}`} className="block h-full">
-          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full cursor-pointer group-hover:shadow-lg">
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full cursor-pointer group-hover:shadow-lg overflow-hidden">
+            {project.thumbnail && (
+              <div className="w-full h-48 overflow-hidden">
+                <img 
+                  src={project.thumbnail} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            )}
             <CardHeader>
               <div className="flex items-start justify-between">
                 <CardTitle className="text-card-foreground group-hover:text-primary transition-colors pr-2">
