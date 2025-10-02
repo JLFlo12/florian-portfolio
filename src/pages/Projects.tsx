@@ -21,7 +21,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['Sécurité', 'Formation'],
       canvaLink: 'https://www.canva.com/design/DAGR75eU94c/lgzMFgPQ42BKlzcXY9N0mw/view',
-      thumbnail: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Pilotage de LED avec Raspberry Pi',
@@ -32,7 +32,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['Raspberry Pi', 'Python', 'GPIO'],
       canvaLink: 'https://www.canva.com/design/DAGdTMt714c/HsmxLn-e2kNvwDFtxLDwhg/edit',
-      thumbnail: '/portfolio-v1/images/raspberry.jpg'
+      thumbnail: 'https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Analyse de transmission WiFi',
@@ -43,7 +43,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['WiFi', 'Analyse', 'Documentation'],
       canvaLink: 'https://www.canva.com/design/DAGdsXFIEP0/vEx7owRuxu67lumBODcDQg/edit?utm_content=DAGdsXFIEP0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
-      thumbnail: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Création d\'un portfolio personnel',
@@ -54,7 +54,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['HTML', 'CSS', 'JavaScript'],
       portfolioLink: 'https://florian-sooty.vercel.app/',
-      thumbnail: '/portfolio-v1/images/pfp.jpg'
+      thumbnail: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Réseau pour petite entreprise (GNS3)',
@@ -64,7 +64,7 @@ const Projects = () => {
       },
       status: 'completed',
       technologies: ['GNS3', 'VLAN', 'Routage', 'NAT'],
-      thumbnail: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Mesure et caractérisation d\'un signal',
@@ -75,7 +75,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['Oscilloscope', 'Analyse', 'Signaux'],
       canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
-      thumbnail: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Projet intégratif : Topologie centralisée + succursale (GNS3)',
@@ -86,7 +86,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['GNS3', 'Topologie', 'Interconnexion'],
       canvaLink: 'https://www.canva.com/design/DAGqmUrS6yE/xnbNcz-UEiyQwCQW5gZ1HQ/edit',
-      thumbnail: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1551808525-51a94da548ce?q=80&w=800&h=600&fit=crop'
     },
     {
       title: 'Création d\'un site web de suivi de commande',
@@ -97,7 +97,7 @@ const Projects = () => {
       status: 'completed',
       technologies: ['React', 'TypeScript', 'Base de données'],
       canvaLink: 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit',
-      thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop'
+      thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&h=600&fit=crop'
     }
   ];
 
