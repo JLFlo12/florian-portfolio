@@ -102,21 +102,51 @@ const Contact = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-primary/20 to-orange-primary-600/20 rounded-lg p-8 border border-primary/20">
-            <h2 className="text-2xl font-bold text-foreground mb-4">
-              Prêt à collaborer ?
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              N'hésitez pas à me contacter pour discuter de vos projets ou opportunités.
-            </p>
-            <a
-              href="mailto:f.girardot--lahogue@rt-iut.re"
-              className="inline-flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg transition-colors"
-            >
-              <Mail className="h-5 w-5" />
-              <span>Envoyer un message</span>
-            </a>
-          </div>
+          <motion.div 
+            className="bg-gradient-to-r from-primary/20 to-orange-primary-600/20 rounded-lg p-8 border border-primary/20 overflow-hidden relative"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+            <div className="relative z-10">
+              <motion.h2 
+                className="text-2xl font-bold text-foreground mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+              >
+                Prêt à collaborer ?
+              </motion.h2>
+              <motion.p 
+                className="text-muted-foreground mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 }}
+              >
+                N'hésitez pas à me contacter pour discuter de vos projets ou opportunités.
+              </motion.p>
+              <motion.a
+                href="mailto:f.girardot--lahogue@rt-iut.re"
+                className="inline-flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9 }}
+              >
+                <Mail className="h-5 w-5" />
+                <span>Envoyer un message</span>
+              </motion.a>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

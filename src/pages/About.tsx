@@ -33,33 +33,70 @@ const About = () => {
           </p>
           
           <div className="grid md:grid-cols-2 gap-12 mt-16">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h2 className="text-3xl font-bold text-primary mb-6">{t('about.educationTitle')}</h2>
-              <div className="space-y-4">
-                <div className="border-l-4 border-primary pl-6">
+              <motion.div 
+                className="space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <div className="border-l-4 border-primary pl-6 hover:border-primary/70 hover:pl-8 transition-all duration-300">
                   <h3 className="text-xl font-semibold text-foreground">{t('about.educationDegree')}</h3>
                   <p className="text-muted-foreground">{t('about.educationDescription')}</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <h2 className="text-3xl font-bold text-primary mb-6">{t('about.expertiseTitle')}</h2>
               <div className="space-y-4 text-muted-foreground">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  whileHover={{ x: 10 }}
+                  className="transition-all duration-300"
+                >
                   <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.networkTitle')}</h3>
                   <p>{t('about.networkDescription')}</p>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  whileHover={{ x: 10 }}
+                  className="transition-all duration-300"
+                >
                   <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.systemsTitle')}</h3>
                   <p>{t('about.systemsDescription')}</p>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  whileHover={{ x: 10 }}
+                  className="transition-all duration-300"
+                >
                   <h3 className="text-lg font-semibold text-foreground mb-2">{t('about.cybersecurityTitle')}</h3>
                   <p>{t('about.cybersecurityDescription')}</p>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* CV Download Section */}
