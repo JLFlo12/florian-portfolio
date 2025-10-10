@@ -64,32 +64,30 @@ const Contact = () => {
           className="grid md:grid-cols-2 gap-6"
         >
           {contactMethods.map((method, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={method.href}
+              target={method.href.startsWith('http') ? '_blank' : '_self'}
+              rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="group"
+              className="group block"
             >
-              <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+              <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer">
                 <CardHeader className="text-center pb-4">
-                  <div className="inline-flex p-4 rounded-full bg-muted group-hover:bg-accent transition-colors">
+                  <div className="inline-flex p-4 rounded-full bg-muted group-hover:bg-accent transition-colors mx-auto">
                     <method.icon className={`h-8 w-8 ${method.color}`} />
                   </div>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <a
-                    href={method.href}
-                    target={method.href.startsWith('http') ? '_blank' : '_self'}
-                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className="text-muted-foreground hover:text-foreground transition-colors break-all"
-                  >
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors break-all">
                     {method.value}
-                  </a>
+                  </span>
                 </CardContent>
               </Card>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
 
