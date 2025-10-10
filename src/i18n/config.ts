@@ -30,6 +30,7 @@ const resources = {
         viewProject: 'Voir le projet',
         // Titres de projets traduits
         projectTitles: {
+          'the-forgotten-survival-horror': 'The Forgotten - Survival Horror',
           'hygiene-cybersecurite': 'Hygiène et cybersécurité',
           'pilotage-led-raspberry': 'Pilotage de LED avec Raspberry Pi',
           'analyse-transmission-wifi': 'Analyse de transmission WiFi',
@@ -41,6 +42,7 @@ const resources = {
         },
         // Descriptions de projets traduites
         projectDescriptions: {
+          'the-forgotten-survival-horror': 'Développement d\'un jeu survival horror en Unreal Engine 5 - Exploration, survie et ambiance oppressante dans une forêt brumeuse',
           'hygiene-cybersecurite': 'Apprentissage des bonnes pratiques de sécurité (mots de passe, antivirus, pare-feu, etc.)',
           'pilotage-led-raspberry': 'Contrôle de LED à distance via un serveur web sur Raspberry Pi',
           'analyse-transmission-wifi': 'Étude de la puissance des signaux WiFi avec WiFi Analyzer et documentation des résultats',
@@ -106,6 +108,7 @@ const resources = {
         viewProject: 'View project',
         // Titres de projets traduits
         projectTitles: {
+          'the-forgotten-survival-horror': 'The Forgotten - Survival Horror',
           'hygiene-cybersecurite': 'IT Hygiene and Cybersecurity',
           'pilotage-led-raspberry': 'LED Control with Raspberry Pi',
           'analyse-transmission-wifi': 'WiFi Transmission Analysis',
@@ -117,6 +120,7 @@ const resources = {
         },
         // Descriptions de projets traduites
         projectDescriptions: {
+          'the-forgotten-survival-horror': 'Survival horror game development in Unreal Engine 5 - Exploration, survival and oppressive atmosphere in a foggy forest',
           'hygiene-cybersecurite': 'Learning security best practices (passwords, antivirus, firewall, etc.)',
           'pilotage-led-raspberry': 'Remote LED control via web server on Raspberry Pi',
           'analyse-transmission-wifi': 'WiFi signal strength study with WiFi Analyzer and results documentation',

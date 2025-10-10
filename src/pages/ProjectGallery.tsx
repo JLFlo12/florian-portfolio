@@ -160,6 +160,45 @@ const ProjectGallery = () => {
           )}
         </motion.div>
 
+        {/* Section des détails du projet si disponibles */}
+        {gallery.details && gallery.details.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-8 text-foreground">
+              Plan d'action du projet
+            </h2>
+            <div className="space-y-6">
+              {gallery.details.map((detail, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-4 text-primary">
+                        {detail.section}
+                      </h3>
+                      <ul className="space-y-2">
+                        {detail.content.map((item, itemIndex) => (
+                          <li key={itemIndex} className="text-muted-foreground leading-relaxed">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Section des fichiers si disponibles */}
         {gallery.files && gallery.files.length > 0 && (
           <motion.div

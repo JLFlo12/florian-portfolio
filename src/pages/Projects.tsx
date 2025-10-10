@@ -11,6 +11,19 @@ import { createProjectId } from '@/data/projectGalleries';
 const Projects = () => {
   const { t } = useTranslation();
 
+  const inProgressProjects = [
+    {
+      title: 'The Forgotten - Survival Horror',
+      description: {
+        fr: 'Développement d\'un jeu survival horror en Unreal Engine 5 - Exploration, survie et ambiance oppressante dans une forêt brumeuse',
+        en: 'Survival horror game development in Unreal Engine 5 - Exploration, survival and oppressive atmosphere in a foggy forest'
+      },
+      status: 'inProgress',
+      technologies: ['Unreal Engine 5', 'Game Design', 'Level Design', 'IA'],
+      thumbnail: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&h=600&fit=crop'
+    }
+  ];
+
   const completedProjects = [
     {
       title: 'Hygiène et cybersécurité',
@@ -209,11 +222,30 @@ const Projects = () => {
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </motion.div>
 
+        {/* In Progress Projects */}
+        {inProgressProjects.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-16"
+          >
+            <h2 className="text-4xl font-bold text-orange-500 mb-8">
+              {t('projects.inProgress')}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {inProgressProjects.map((project, index) => (
+                <ProjectCard key={index} project={project} index={index} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Completed Projects */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-16"
         >
           <h2 className="text-4xl font-bold text-primary mb-8">
@@ -221,7 +253,7 @@ const Projects = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {completedProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
+              <ProjectCard key={index} project={project} index={index} delay={0.2} />
             ))}
           </div>
         </motion.div>
