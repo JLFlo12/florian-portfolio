@@ -77,9 +77,6 @@ const Contact = () => {
                   <div className="inline-flex p-4 rounded-full bg-muted group-hover:bg-accent transition-colors">
                     <method.icon className={`h-8 w-8 ${method.color}`} />
                   </div>
-                  <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
-                    {method.label}
-                  </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <a
