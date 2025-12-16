@@ -23,8 +23,8 @@ const Home = () => {
   const technicalSkills = [
     { name: 'Réseaux & GNS3', level: 'maitrise' },
     { name: 'Linux/Windows Server', level: 'maitrise' },
-    { name: 'JavaScript/TypeScript', level: 'avance' },
-    { name: 'PHP & SQL', level: 'avance' },
+    { name: 'JavaScript/TypeScript', level: 'base' },
+    { name: 'PHP & SQL', level: 'base' },
     { name: 'Cybersécurité', level: 'fragile' },
     { name: 'Virtualisation', level: 'maitrise' }
   ];
