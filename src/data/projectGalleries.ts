@@ -58,109 +58,156 @@ export const projectGalleries: ProjectGallery[] = [
       {
         section: '📋 Informations générales',
         content: [
-          '🎮 Titre : "The Forgotten"',
+          '🎮 Titre de travail : "The Forgotten"',
           '🎯 Genre : Aventure / Survival Horror',
           '👁️ Perspective : Troisième personne',
-          '⚙️ Moteur : Unreal Engine 5',
-          '💻 Plateforme : PC (Windows)',
-          '🎨 Style : Réalisme années 80, nocturne et brumeux',
-          '⏱️ Durée : 10 mois de développement',
-          '👥 Équipe : 3 personnes'
+          '⚙️ Moteur de jeu : Unreal Engine 5',
+          '💻 Plateforme cible : PC (Windows)',
+          '🎨 Style visuel : Réalisme — Années 80, ambiance nocturne et brumeuse',
+          '⏱️ Durée de développement : 10 mois',
+          '👥 Équipe : 3 personnes',
+          '🎯 Objectif : Créer un jeu complet et jouable (non commercialisé)'
         ]
       },
       {
-        section: '📖 Concept du jeu',
+        section: '📖 Concept du jeu - Pitch',
         content: [
-          '🎭 Le joueur incarne un homme d\'une quarantaine d\'années venu dans une ville désertée suite à une crise économique.',
-          '🌲 Exploration d\'une vaste forêt et d\'un ancien camp militaire pour retrouver son frère disparu avec son escadron.',
-          '👻 Monstre principal intuable qui poursuit le joueur',
-          '⚔️ Combat au corps à corps uniquement avec armes improvisées',
+          '🎭 Le joueur incarne un homme d\'une quarantaine d\'années venu dans une ville désertée à la suite d\'une crise économique.',
+          '🌲 En explorant une vaste forêt et un ancien camp militaire, il tente de retrouver son frère disparu avec son escadron.',
+          '🌫️ L\'univers est oppressant, plongé dans le brouillard et la nuit.',
+          '👻 Le joueur est poursuivi par un monstre principal intuable et doit survivre en explorant, se cachant et combattant des créatures secondaires.'
+        ]
+      },
+      {
+        section: '🎮 Caractéristiques principales',
+        content: [
+          '🗺️ Monde semi-ouvert (forêt, maisons, campement militaire)',
+          '🌙 Ambiance années 80, nocturne, réaliste et brumeuse',
           '🔦 Système de lumière (lampe à huile, torche) influant sur la visibilité',
+          '⚔️ Combat au corps à corps uniquement (armes improvisées)',
+          '👹 Ennemi principal invincible, poursuivant le joueur en continu',
           '🧟 Petits monstres destructibles',
-          '🗺️ Monde semi-ouvert avec exploration, collecte et inventaire',
+          '🎒 Exploration, collecte d\'objets et gestion d\'inventaire simple',
           '😨 Thématique : isolement, peur, survie et perte'
         ]
       },
       {
         section: '🎯 Objectifs de production',
         content: [
-          '✅ Prototype complet, stable et jouable sous Unreal Engine 5',
-          '🎭 Expérience immersive basée sur l\'atmosphère et la tension',
-          '🎨 Cohérence visuelle et sonore avec moyens limités',
-          '⚡ Optimisation pour PC milieu de gamme'
+          '✅ Concevoir un prototype complet, stable et jouable sous Unreal Engine 5',
+          '🎭 Créer une expérience immersive reposant sur l\'atmosphère et la tension psychologique',
+          '🎨 Garantir une cohérence visuelle et sonore avec des moyens limités (assets gratuits / low-cost)',
+          '⚡ Optimiser pour un fonctionnement fluide sur PC milieu de gamme'
         ]
       },
       {
-        section: '📅 Phase 1 - Pré-production (Mois 1-2)',
+        section: '📅 Phase 1 — Pré-production (Mois 1-2)',
         content: [
-          '📝 Rédaction du Game Design Document',
-          '🎨 Constitution du moodboard visuel et sonore',
-          '⚙️ Préparation du projet Unreal Engine 5',
-          '🧪 Prototype basique : personnage, caméra, terrain test',
-          '📦 Identification des assets disponibles'
+          '🎯 Objectif : définir le cadre du projet et poser les bases techniques',
+          '📝 Rédaction du Game Design Document (GDD) : concept narratif, gameplay, univers, mécaniques',
+          '📋 Description des systèmes (combat, lumière, IA, inventaire)',
+          '🗺️ Schéma de la carte et des zones clés',
+          '🎨 Constitution d\'un moodboard visuel et sonore',
+          '⚙️ Préparation du projet Unreal Engine 5 (paramètres, architecture de dossiers)',
+          '🧪 Réalisation d\'un prototype basique : personnage, caméra, terrain test',
+          '📦 Identification des assets disponibles (Unreal Marketplace, Megascans, Sketchfab)',
+          '✅ Livrable : prototype de base fonctionnel'
         ]
       },
       {
-        section: '🎮 Phase 2 - Prototype jouable (Mois 3-4)',
+        section: '🎮 Phase 2 — Prototype jouable (Mois 3-4)',
         content: [
-          '⚔️ Système de combat au corps à corps',
-          '💡 Gestion de lumière (torche, lampe à huile)',
-          '🎒 Inventaire minimaliste',
-          '🤖 IA du monstre principal (traque, détection)',
-          '👾 IA des petits ennemis (patrouille, attaque)',
-          '🌲 Terrain prototype avec boucle de gameplay',
-          '🧪 Tests d\'exploration, collecte, fuite, combat'
+          '🎯 Objectif : construire le cœur du gameplay',
+          '⚔️ Implémentation du système de combat au corps à corps',
+          '💡 Développement de la gestion de lumière (torche, lampe à huile, durée de vie)',
+          '🎒 Création d\'un inventaire minimaliste',
+          '🤖 Développement IA Monstre principal (traque, détection sonore et visuelle)',
+          '👾 Développement IA Petits ennemis (patrouille, poursuite, attaque, mort)',
+          '🌲 Création d\'un terrain prototype : forêt et bâtiments de test',
+          '🔄 Test de la boucle de gameplay (exploration, collecte, fuite, combat)',
+          '✅ Livrable : version jouable du cœur du jeu (alpha préliminaire)'
         ]
       },
       {
-        section: '🏗️ Phase 3 - Production (Mois 5-7)',
+        section: '🏗️ Phase 3 — Production (Mois 5-7)',
         content: [
-          '🗺️ Construction du monde semi-ouvert',
-          '🌳 Intégration d\'assets réalistes',
-          '🏚️ Zones explorables, caches et ressources',
-          '📖 Narration environnementale (indices, objets)',
-          '🎵 Intégration bande-son et effets audio',
-          '🎯 Quête principale et objectifs secondaires'
+          '🎯 Objectif : construire le contenu principal du jeu',
+          '🗺️ Construction du monde semi-ouvert : topographie, chemins, maisons, campement militaire',
+          '🌳 Intégration d\'assets réalistes (environnement, végétation, éclairage)',
+          '🏚️ Ajout de zones explorables, de caches et de ressources',
+          '📖 Développement de la narration environnementale (indices, objets interactifs, journaux)',
+          '🎵 Intégration de la bande-son et des effets audio d\'ambiance',
+          '🎯 Création de la quête principale et des objectifs secondaires',
+          '✅ Livrable : version Alpha complète (toutes mécaniques présentes, sans optimisation)'
         ]
       },
       {
-        section: '⚡ Phase 4 - Optimisation (Mois 8-9)',
+        section: '⚡ Phase 4 — Optimisation et tests (Mois 8-9)',
         content: [
-          '🚀 Optimisation graphique et performances',
-          '🐛 Correction bugs (collisions, IA, interface)',
-          '⚖️ Ajustement difficulté et comportements',
-          '🌫️ Amélioration atmosphère (brouillard, lumière)',
-          '🧪 Sessions de test internes et externes'
+          '🎯 Objectif : stabiliser, équilibrer et peaufiner le jeu',
+          '🚀 Optimisation graphique et performances (LOD, occlusion, lumière dynamique)',
+          '🐛 Correction des bugs de collisions, IA et interface',
+          '⚖️ Ajustement de la difficulté, de la vitesse du joueur et du comportement des ennemis',
+          '🌫️ Amélioration du rendu atmosphérique (brouillard, lumière volumétrique, pluie éventuelle)',
+          '🧪 Sessions de test internes et externes (feedback de joueurs tests)',
+          '✅ Livrable : version Beta stable et jouable'
         ]
       },
       {
-        section: '✅ Phase 5 - Finalisation (Mois 10)',
+        section: '✅ Phase 5 — Finalisation (Mois 10)',
         content: [
-          '🎮 Menu principal et options',
-          '🐛 Correction bugs critiques',
-          '🎬 Générique et crédits',
-          '💻 Compilation et tests multi-machines',
-          '🎥 Vidéo de démonstration'
+          '🎯 Objectif : livrer une version finale jouable',
+          '🎮 Intégration du menu principal, des options et de l\'écran de fin',
+          '🐛 Correction des derniers bugs critiques',
+          '🎬 Ajout du générique et des crédits',
+          '💻 Compilation et tests finaux sur plusieurs machines',
+          '🎥 Préparation d\'une courte vidéo de démonstration',
+          '✅ Livrable : version finale stable (jeu complet jouable sur PC)'
+        ]
+      },
+      {
+        section: '📊 Rétroplanning synthétique',
+        content: [
+          '📅 Mois 1 : Pré-production — Rédaction GDD, moodboard, config UE5, terrain test',
+          '📅 Mois 2 : Pré-production (suite) — Finalisation GDD, plan technique, tests gameplay',
+          '📅 Mois 3 : Prototype — Combat corps à corps, gestion lumière, inventaire, début IA monstre',
+          '📅 Mois 4 : Prototype (suite) — IA petits monstres, boucle gameplay, map test jouable',
+          '📅 Mois 5 : Production — Level design (forêt, camp militaire, maisons), assets réalistes',
+          '📅 Mois 6 : Production (suite) — Éléments narratifs, sound design, tests atmosphère',
+          '📅 Mois 7 : Production (fin) — Finalisation carte, ajustements rythme, quête principale',
+          '📅 Mois 8 : Optimisation — Graphismes, lumière, IA, correction bugs majeurs',
+          '📅 Mois 9 : Tests — Playtests internes/externes, collecte feedback, équilibrage',
+          '📅 Mois 10 : Finalisation — Menu principal, derniers bugs, générique, build final'
         ]
       },
       {
         section: '🛠️ Outils et ressources',
         content: [
-          '⚙️ Unreal Engine 5.3+',
-          '📋 Gestion : Notion / Trello',
-          '🔄 Versioning : GitHub / Perforce',
-          '🎨 Assets : Unreal Marketplace, Quixel Megascans',
-          '🎵 Audio : Freesound.org, Sonniss',
-          '📝 Documentation : Google Docs / Notion'
+          '⚙️ Moteur : Unreal Engine 5.3+',
+          '📋 Gestion de projet : Notion / Trello',
+          '🔄 Versioning : GitHub ou Perforce',
+          '🎨 Assets : Unreal Marketplace, Quixel Megascans, Sketchfab (gratuits ou libres de droits)',
+          '🎵 Audio : Freesound.org, Sonniss Game Audio Bundle',
+          '📝 Documentation : Google Docs / Notion (GDD, suivi technique, bug list)',
+          '🧪 Tests : Builds mensuels, sessions de test externes dès le mois 8'
         ]
       },
       {
-        section: '🎯 Livrable final',
+        section: '⚠️ Risques et contraintes',
+        content: [
+          '🔴 Manque de temps (Impact élevé) → Solution : Réduire la taille de la carte et le nombre d\'ennemis',
+          '🟠 Performance Unreal (Impact moyen) → Solution : Optimiser textures et éclairages dynamiques',
+          '🟠 Manque d\'assets réalistes (Impact moyen) → Solution : Utiliser des packs gratuits / Megascans',
+          '🔴 Travail en équipe réduite (Impact élevé) → Solution : Prioriser les systèmes clés et éviter les fonctions secondaires'
+        ]
+      },
+      {
+        section: '🎯 Livrable final attendu',
         content: [
           '✅ Jeu complet et jouable sur PC',
-          '⏱️ Durée : 30 à 60 minutes',
-          '🎭 Ambiance immersive et cohérente',
-          '💻 Build compilé testé sous Windows'
+          '⏱️ Durée de jeu estimée : 30 à 60 minutes',
+          '🎭 Ambiance immersive, cohérente et stable',
+          '💻 Build final compilé et testé sous Windows'
         ]
       }
     ]
