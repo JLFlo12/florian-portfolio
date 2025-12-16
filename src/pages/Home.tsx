@@ -10,21 +10,31 @@ import RotatingGlobe from '@/components/RotatingGlobe';
 const Home = () => {
   const { t } = useTranslation();
 
+  const getLevelLabel = (level: string) => {
+    const labels: Record<string, { text: string; color: string }> = {
+      'maitrise': { text: 'Maîtrisé', color: 'bg-green-500/20 text-green-400 border-green-500/30' },
+      'avance': { text: 'Avancé', color: 'bg-primary/20 text-primary border-primary/30' },
+      'base': { text: 'Base', color: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+      'fragile': { text: 'Fragile', color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' }
+    };
+    return labels[level] || labels['base'];
+  };
+
   const technicalSkills = [
-    { name: 'Réseaux & GNS3', level: 85 },
-    { name: 'Linux/Windows Server', level: 80 },
-    { name: 'JavaScript/TypeScript', level: 75 },
-    { name: 'PHP & SQL', level: 70 },
-    { name: 'Cybersécurité', level: 25 },
-    { name: 'Virtualisation', level: 80 }
+    { name: 'Réseaux & GNS3', level: 'maitrise' },
+    { name: 'Linux/Windows Server', level: 'maitrise' },
+    { name: 'JavaScript/TypeScript', level: 'avance' },
+    { name: 'PHP & SQL', level: 'avance' },
+    { name: 'Cybersécurité', level: 'fragile' },
+    { name: 'Virtualisation', level: 'maitrise' }
   ];
 
   const softSkills = [
-    { name: 'Leadership', level: 45 },
-    { name: 'Communication', level: 60 },
-    { name: 'Travail d\'équipe', level: 80 },
-    { name: 'Discipline', level: 90 },
-    { name: 'Esprit critique', level: 65 }
+    { name: 'Leadership', level: 'base' },
+    { name: 'Communication', level: 'avance' },
+    { name: 'Travail d\'équipe', level: 'maitrise' },
+    { name: 'Discipline', level: 'maitrise' },
+    { name: 'Esprit critique', level: 'avance' }
   ];
 
   return (
@@ -161,31 +171,25 @@ const Home = () => {
               <h2 className="text-4xl font-bold mb-8 text-primary">
                 {t('home.skillsTitle')}
               </h2>
-              <div className="space-y-6">
-                {technicalSkills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="space-y-2"
-                  >
-                    <div className="flex justify-between">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-primary">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
-                        viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="space-y-4">
+                {technicalSkills.map((skill, index) => {
+                  const levelInfo = getLevelLabel(skill.level);
+                  return (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, x: -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="flex items-center justify-between p-3 bg-background/50 rounded-lg border border-border/50"
+                    >
+                      <span className="text-foreground font-medium">{skill.name}</span>
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium border ${levelInfo.color}`}>
+                        {levelInfo.text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
 
@@ -199,31 +203,25 @@ const Home = () => {
               <h2 className="text-4xl font-bold mb-8 text-primary">
                 {t('home.softSkillsTitle')}
               </h2>
-              <div className="space-y-6">
-                {softSkills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="space-y-2"
-                  >
-                    <div className="flex justify-between">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-primary">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ delay: index * 0.1 + 0.3, duration: 1 }}
-                        viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="space-y-4">
+                {softSkills.map((skill, index) => {
+                  const levelInfo = getLevelLabel(skill.level);
+                  return (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="flex items-center justify-between p-3 bg-background/50 rounded-lg border border-border/50"
+                    >
+                      <span className="text-foreground font-medium">{skill.name}</span>
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium border ${levelInfo.color}`}>
+                        {levelInfo.text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
