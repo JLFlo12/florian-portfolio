@@ -4,6 +4,7 @@ import { Send, Bot, User, Terminal, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import ReactMarkdown from 'react-markdown';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
@@ -158,7 +159,7 @@ const Chatbot = () => {
               <Terminal className="h-6 w-6 text-green-400" />
             </div>
             <h1 className="text-3xl font-bold text-foreground font-mono">
-              FG-CyberBot
+              Jarvis
             </h1>
             <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/30">
               <ShieldCheck className="h-6 w-6 text-green-400" />
@@ -207,14 +208,20 @@ const Chatbot = () => {
                     : <Bot className="h-4 w-4 text-green-400" />
                   }
                 </div>
-                <div className={`max-w-[80%] rounded-lg px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
+                <div className={`max-w-[80%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-primary/10 border border-primary/20 text-foreground'
+                    ? 'bg-primary/10 border border-primary/20 text-foreground whitespace-pre-wrap'
                     : 'bg-muted/50 border border-border text-foreground font-mono'
                 }`}>
-                  {msg.content}
-                  {msg.role === 'assistant' && isLoading && i === messages.length - 1 && (
-                    <span className="inline-block w-2 h-4 bg-green-400 ml-1 animate-pulse" />
+                  {msg.role === 'assistant' ? (
+                    <div className="prose prose-sm prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_ol]:my-1 [&_li]:my-0.5 [&_h1]:text-lg [&_h2]:text-base [&_h3]:text-sm [&_code]:bg-muted [&_code]:px-1 [&_code]:rounded [&_pre]:bg-muted [&_pre]:p-3 [&_pre]:rounded-lg [&_a]:text-primary [&_strong]:text-foreground">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      {isLoading && i === messages.length - 1 && (
+                        <span className="inline-block w-2 h-4 bg-green-400 ml-1 animate-pulse" />
+                      )}
+                    </div>
+                  ) : (
+                    msg.content
                   )}
                 </div>
               </motion.div>

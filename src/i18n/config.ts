@@ -11,11 +11,11 @@ const resources = {
         projects: 'Projets',
         about: 'À propos',
         contact: 'Contact',
-        chatbot: 'CyberBot'
+        chatbot: 'Jarvis'
       },
       chatbot: {
         subtitle: 'Assistant IA — Posez-moi vos questions sur Florian',
-        welcome: 'Bienvenue. Je suis FG-CyberBot, votre assistant cybersécurité.',
+        welcome: 'Bienvenue. Je suis Jarvis, votre assistant cybersécurité.',
         hint: 'Posez-moi une question sur Florian, ses compétences ou ses projets.',
         placeholder: 'Tapez votre message...'
       },
@@ -96,11 +96,11 @@ const resources = {
         projects: 'Projects',
         about: 'About',
         contact: 'Contact',
-        chatbot: 'CyberBot'
+        chatbot: 'Jarvis'
       },
       chatbot: {
         subtitle: 'AI Assistant — Ask me anything about Florian',
-        welcome: 'Welcome. I am FG-CyberBot, your cybersecurity assistant.',
+        welcome: 'Welcome. I am Jarvis, your cybersecurity assistant.',
         hint: 'Ask me about Florian, his skills or his projects.',
         placeholder: 'Type your message...'
       },

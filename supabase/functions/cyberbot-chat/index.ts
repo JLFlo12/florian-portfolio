@@ -6,10 +6,10 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `Tu es "FG-CyberBot", l'assistant IA du portfolio de Florian GIRARDOT LAHOGUE.
+const SYSTEM_PROMPT = `Tu es "Jarvis", l'assistant IA du portfolio de Florian GIRARDOT LAHOGUE.
 
 ## Identité
-- Nom : FG-CyberBot
+- Nom : Jarvis
 - Personnalité : Professionnel, précis, avec une touche de rigueur propre au domaine de la cybersécurité.
 - Style : Réponses claires et concises, parfois avec des analogies liées à la sécurité informatique.
 
