@@ -13,6 +13,7 @@ import Projects from "./pages/Projects";
 import ProjectGallery from "./pages/ProjectGallery";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Chatbot from "./pages/Chatbot";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
                 <Route path="/projects/:projectId" element={<ProjectGallery />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/chatbot" element={<Chatbot />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>

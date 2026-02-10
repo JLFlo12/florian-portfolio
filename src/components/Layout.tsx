@@ -27,7 +27,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: '/', label: t('nav.home') },
     { path: '/projects', label: t('nav.projects') },
     { path: '/about', label: t('nav.about') },
-    { path: '/contact', label: t('nav.contact') }
+    { path: '/contact', label: t('nav.contact') },
+    { path: '/chatbot', label: t('nav.chatbot') }
   ];
 
   const changeLanguage = (lng: string) => {

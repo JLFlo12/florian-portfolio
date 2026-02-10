@@ -1,0 +1,4 @@
+project_id = "esphltubteoswpkqbszo"
+
+[functions.cyberbot-chat]
+verify_jwt = false
