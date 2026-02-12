@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Bot, User, Terminal, ShieldCheck } from 'lucide-react';
+import { Send, Bot, User, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -146,46 +146,49 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-4 py-8 sm:px-6">
-      <div className="max-w-3xl mx-auto w-full flex flex-col flex-1">
+    <div className="min-h-screen flex flex-col px-4 py-6 sm:px-6">
+      <div className="max-w-4xl mx-auto w-full flex flex-col flex-1">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-6 space-y-2"
+          className="text-center mb-5"
         >
-          <div className="flex items-center justify-center gap-3">
-            <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/30">
-              <Terminal className="h-6 w-6 text-green-400" />
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20">
+              <Sparkles className="h-5 w-5 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold text-foreground font-mono">
+            <h1 className="text-3xl font-semibold text-foreground tracking-tight">
               Jarvis
             </h1>
-            <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/30">
-              <ShieldCheck className="h-6 w-6 text-green-400" />
-            </div>
           </div>
-          <p className="text-muted-foreground text-sm font-mono">
+          <p className="text-muted-foreground text-sm">
             {t('chatbot.subtitle')}
           </p>
         </motion.div>
 
-        {/* Chat Area */}
-        <div className="flex-1 flex flex-col bg-background/50 border border-border rounded-xl overflow-hidden backdrop-blur-sm">
+        {/* Chat Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex-1 flex flex-col rounded-2xl border border-border bg-card/50 backdrop-blur-md overflow-hidden shadow-lg"
+        >
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[400px] max-h-[60vh]">
+          <div className="flex-1 overflow-y-auto p-5 space-y-5 min-h-[500px] max-h-[70vh]">
             {messages.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-4 py-16"
+                transition={{ delay: 0.3 }}
+                className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-4 py-20"
               >
-                <div className="p-4 rounded-full bg-green-500/5 border border-green-500/20">
-                  <Bot className="h-10 w-10 text-green-400" />
+                <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10">
+                  <Bot className="h-10 w-10 text-primary/60" />
                 </div>
-                <div className="text-center space-y-1 font-mono">
-                  <p className="text-green-400 text-sm">{'> '}{t('chatbot.welcome')}</p>
-                  <p className="text-xs">{t('chatbot.hint')}</p>
+                <div className="text-center space-y-1.5">
+                  <p className="text-foreground/80 font-medium">{t('chatbot.welcome')}</p>
+                  <p className="text-sm text-muted-foreground">{t('chatbot.hint')}</p>
                 </div>
               </motion.div>
             )}
@@ -193,31 +196,45 @@ const Chatbot = () => {
             {messages.map((msg, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.25 }}
                 className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
               >
-                <div className={`shrink-0 p-2 rounded-lg h-fit ${
+                <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                   msg.role === 'user'
-                    ? 'bg-primary/10 border border-primary/30'
-                    : 'bg-green-500/10 border border-green-500/30'
+                    ? 'bg-primary/15'
+                    : 'bg-muted'
                 }`}>
                   {msg.role === 'user'
                     ? <User className="h-4 w-4 text-primary" />
-                    : <Bot className="h-4 w-4 text-green-400" />
+                    : <Bot className="h-4 w-4 text-foreground/70" />
                   }
                 </div>
-                <div className={`max-w-[80%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
+                <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-primary/10 border border-primary/20 text-foreground whitespace-pre-wrap'
-                    : 'bg-muted/50 border border-border text-foreground font-mono'
+                    ? 'bg-primary text-primary-foreground rounded-br-md whitespace-pre-wrap'
+                    : 'bg-muted/60 text-foreground rounded-bl-md'
                 }`}>
                   {msg.role === 'assistant' ? (
-                    <div className="prose prose-sm prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_ol]:my-1 [&_li]:my-0.5 [&_h1]:text-lg [&_h2]:text-base [&_h3]:text-sm [&_code]:bg-muted [&_code]:px-1 [&_code]:rounded [&_pre]:bg-muted [&_pre]:p-3 [&_pre]:rounded-lg [&_a]:text-primary [&_strong]:text-foreground">
+                    <div className="prose prose-sm dark:prose-invert max-w-none
+                      [&_p]:my-1.5 [&_p]:leading-relaxed
+                      [&_ul]:my-2 [&_ol]:my-2 [&_li]:my-0.5
+                      [&_h1]:text-lg [&_h1]:font-semibold [&_h1]:mt-3 [&_h1]:mb-1.5
+                      [&_h2]:text-base [&_h2]:font-semibold [&_h2]:mt-3 [&_h2]:mb-1.5
+                      [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:mt-2 [&_h3]:mb-1
+                      [&_code]:bg-background/50 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-xs [&_code]:font-mono
+                      [&_pre]:bg-background/50 [&_pre]:p-3 [&_pre]:rounded-xl [&_pre]:my-2 [&_pre]:overflow-x-auto
+                      [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2
+                      [&_strong]:text-foreground [&_strong]:font-semibold
+                      [&_blockquote]:border-l-2 [&_blockquote]:border-primary/30 [&_blockquote]:pl-3 [&_blockquote]:italic [&_blockquote]:text-muted-foreground
+                      [&_hr]:border-border [&_hr]:my-3
+                      [&_table]:border-collapse [&_th]:bg-muted/50 [&_th]:px-3 [&_th]:py-1.5 [&_th]:text-left [&_th]:text-xs [&_th]:font-semibold
+                      [&_td]:px-3 [&_td]:py-1.5 [&_td]:border-t [&_td]:border-border [&_td]:text-xs
+                    ">
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                       {isLoading && i === messages.length - 1 && (
-                        <span className="inline-block w-2 h-4 bg-green-400 ml-1 animate-pulse" />
+                        <span className="inline-block w-1.5 h-4 bg-primary rounded-full ml-0.5 animate-pulse" />
                       )}
                     </div>
                   ) : (
@@ -233,14 +250,14 @@ const Chatbot = () => {
                 animate={{ opacity: 1 }}
                 className="flex gap-3"
               >
-                <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/30 h-fit">
-                  <Bot className="h-4 w-4 text-green-400" />
+                <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-muted">
+                  <Bot className="h-4 w-4 text-foreground/70" />
                 </div>
-                <div className="bg-muted/50 border border-border rounded-lg px-4 py-3">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="bg-muted/60 rounded-2xl rounded-bl-md px-4 py-3">
+                  <div className="flex gap-1.5 items-center">
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </motion.div>
@@ -249,34 +266,29 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-border bg-background/80">
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-400 font-mono text-sm select-none">
-                  {'> '}
-                </span>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={e => setInput(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder={t('chatbot.placeholder')}
-                  disabled={isLoading}
-                  className="w-full h-11 pl-8 pr-4 bg-muted/50 border border-border rounded-lg text-sm font-mono text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 disabled:opacity-50 transition-all"
-                />
-              </div>
+          <div className="p-4 border-t border-border/50 bg-card/80 backdrop-blur-sm">
+            <div className="flex gap-2.5 items-center">
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder={t('chatbot.placeholder')}
+                disabled={isLoading}
+                className="flex-1 h-11 px-4 bg-muted/40 border border-border/50 rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 disabled:opacity-50 transition-all"
+              />
               <Button
                 onClick={send}
                 disabled={!input.trim() || isLoading}
                 size="icon"
-                className="h-11 w-11 bg-green-600 hover:bg-green-500 text-white shrink-0"
+                className="h-11 w-11 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shrink-0 transition-all"
               >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
