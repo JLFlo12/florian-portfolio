@@ -340,6 +340,204 @@ export const projectGalleries: ProjectGallery[] = [
     ]
   },
   {
+    projectId: 'jeu-narratif-25d--science-fiction-motionnelle',
+    projectTitle: 'Jeu narratif 2.5D — Science-fiction émotionnelle',
+    images: [
+      {
+        id: '1',
+        url: 'https://images.unsplash.com/photo-1534996858221-380b92700493?w=800&h=600&fit=crop',
+        title: 'Univers sci-fi émotionnel',
+        description: 'Ambiance contemplative et science-fiction'
+      },
+      {
+        id: '2',
+        url: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=600&fit=crop',
+        title: 'La plage — Monde B',
+        description: 'Lieu central du récit entre deux réalités'
+      },
+      {
+        id: '3',
+        url: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&h=600&fit=crop',
+        title: 'Singularités & trous noirs',
+        description: 'Effets visuels narratifs — collision des mondes'
+      }
+    ],
+    details: [
+      {
+        section: '📋 Informations générales',
+        content: [
+          '🎮 Genre : Jeu narratif 2.5D — Science-fiction émotionnelle',
+          '⚙️ Moteur : Godot 4.x',
+          '💻 Plateforme cible : PC',
+          '⏱️ Durée de jeu estimée : 20–40 minutes (démo)',
+          '🎨 Style : Contemplatif, minimaliste, émotionnel',
+          '🎯 Objectif : Explorer le deuil, l\'amour et la mécanique quantique à travers le gameplay'
+        ]
+      },
+      {
+        section: '📖 Concept — Pitch',
+        content: [
+          '🎭 Eliott, un lycéen brillant mais détaché, vit entre deux réalités depuis la mort de sa sœur Élise.',
+          '🌊 La plage est le point de convergence : un souvenir figé qui refuse de disparaître.',
+          '💫 L\'arrivée de Lina stabilise ses "interférences" — mais les deux mondes entrent en collision.',
+          '🔮 Le joueur fait face à un choix quantique : observer pour rester, ou lâcher et disparaître.'
+        ]
+      },
+      {
+        section: '🎮 Structure narrative — 5 Chapitres',
+        content: [
+          '📕 Chapitre 1 — État Stable : Routine d\'Eliott, premières anomalies (vertiges, déjà-vu), arrivée de Lina',
+          '📗 Chapitre 2 — Résonance : Construction de la romance, moments partagés, premiers doutes',
+          '📘 Chapitre 3 — Superposition : Révélation du Monde B, plage figée, Lina enfant, flashbacks d\'Élise',
+          '📙 Chapitre 4 — Collision : Les deux mondes en conflit, Lina disparaît définitivement',
+          '📒 Chapitre 5 — Observation : Choix final quantique, deux épilogues distincts'
+        ]
+      },
+      {
+        section: '⚙️ Systèmes de gameplay',
+        content: [
+          '🎮 Player controller 2.5D avec caméra follow',
+          '💬 Système de dialogue avec choix, flags et conditions',
+          '🌍 Maps à états multiples (Monde A / Monde B / Fusion)',
+          '🌀 Interférences visuelles (shaders : blur, aberration chromatique, displacement)',
+          '🕳️ Singularités / trous noirs (zones de danger sensoriel)',
+          '💕 Mini-jeux émotionnels (marche synchronisée, révisions, lancer de cailloux)',
+          '🎬 Cutscenes scriptées (caméra sur rails, dialogues intégrés)',
+          '🔊 Audio adaptatif selon world_state (Normal / Interference / Void)'
+        ]
+      },
+      {
+        section: '📅 Plan de production',
+        content: [
+          '📦 Étape 0 : Préparation projet Godot, arborescence, page vision (1-2 jours)',
+          '🎮 Étape 1 : Prototype jouable — Vertical Slice (contrôles, dialogue, transitions)',
+          '💬 Étape 2 : Système de dialogue solide (JSON, choix, flags, conditions)',
+          '📊 Étape 3 : Story Manager & progression (GameState, EventBus, chapitres/actes)',
+          '🗺️ Étape 4 : Pipeline Maps (1 layout × 3 couches d\'ambiance)',
+          '🌀 Étape 5 : Interférences (post-process shader, audio filtré)',
+          '🕳️ Étape 6 : Singularités (Area3D, drag, distorsion)',
+          '💕 Étape 7 : Mini-jeux émotionnels',
+          '🎬 Étape 8 : Cutscenes & mise en scène',
+          '🔮 Étape 9 : Choix final quantique + deux épilogues',
+          '🔊 Étape 10 : Audio adaptatif',
+          '💾 Étape 11 : Sauvegardes & QA'
+        ]
+      },
+      {
+        section: '🎯 Fins du jeu',
+        content: [
+          '✅ Fin heureuse : Eliott accepte l\'incertitude — Lina revient, ils vivent ensemble',
+          '💀 Fin tragique : Le système se ferme — Lina revient, mais Eliott n\'est plus là',
+          '💡 Message final : "Observer, c\'est rester. Lâcher, c\'est disparaître."'
+        ]
+      }
+    ]
+  },
+  {
+    projectId: 'thornfall--action-rpg-souls-like',
+    projectTitle: 'Thornfall — Action RPG Souls-like',
+    images: [
+      {
+        id: '1',
+        url: 'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=800&h=600&fit=crop',
+        title: 'Forêt sinistre',
+        description: 'Environnement dark fantasy oppressant'
+      },
+      {
+        id: '2',
+        url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
+        title: 'Combat Souls-like',
+        description: 'Système de combat lourd et punitif'
+      },
+      {
+        id: '3',
+        url: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800&h=600&fit=crop',
+        title: 'Boss — Althéon',
+        description: 'Gardien de Noirracine — Boss final de la démo'
+      }
+    ],
+    details: [
+      {
+        section: '📋 Informations générales',
+        content: [
+          '🎮 Titre : Thornfall',
+          '🎯 Genre : Action RPG — Souls-like',
+          '⚙️ Moteur : Unreal Engine',
+          '💻 Plateforme : PC (manette recommandée)',
+          '👥 Équipe : 2 programmeurs + 1 game designer',
+          '⏱️ Durée de la démo : ~20 minutes',
+          '🎨 Style : Dark fantasy, couleurs désaturées, brume et ombres'
+        ]
+      },
+      {
+        section: '📖 Vision & Objectif',
+        content: [
+          '⚔️ Combat lourd et punitif — chaque action a un coût',
+          '👹 Boss mémorable et très difficile',
+          '💀 Apprentissage par la mort et l\'observation',
+          '🎯 Prouver la solidité du gameplay Souls-like en démo courte'
+        ]
+      },
+      {
+        section: '🎮 Core Gameplay Loop',
+        content: [
+          '🌲 Exploration prudente de la forêt sinistre',
+          '⚔️ Affrontement d\'ennemis standards',
+          '💀 Mort → perte de ressources → retour au checkpoint',
+          '🧠 Apprentissage des patterns',
+          '👹 Affrontement du boss final : Althéon, Gardien de Noirracine'
+        ]
+      },
+      {
+        section: '⚔️ Système de combat',
+        content: [
+          '🗡️ 1 arme unique : grosse épée — attaques lentes et puissantes',
+          '⚡ Stamina max : 100 — Régénération : 20/s (délai 0.8s)',
+          '🔹 Attaque légère : 20 stamina, 100 dégâts, 0.9s',
+          '🔸 Attaque lourde : 40 stamina, 180 dégâts, 1.6s',
+          '🔵 Roulade : 30 stamina, i-frames 0.35s',
+          '🛡️ Garde : drain 10/s + 25 par impact, garde brisée à 0 stamina (stun 1.5s)',
+          '💊 Soins : 3 charges, 2s d\'animation, interruptible'
+        ]
+      },
+      {
+        section: '👹 Boss — Althéon, Gardien de Noirracine',
+        content: [
+          '❤️ PV : 3 500 — Dégâts : 40-60% des PV du joueur',
+          '1️⃣ Coup vertical écrasant : casse-garde, drain stamina +40',
+          '2️⃣ Balayage horizontal : anti-roulade, arc large',
+          '3️⃣ Enchaînement 2 coups : test de discipline, punition attaque trop tôt',
+          '4️⃣ Estoc enracinée : racines en ligne, punition distance moyenne',
+          '5️⃣ Coup retardé : mind game, timing trompeur',
+          '6️⃣ Rugissement de Noirracine : drain 60 stamina, pas de dégâts directs',
+          '🔥 Phase critique (≤30% PV) : attaques plus fréquentes, enchaînements, moins de pauses'
+        ]
+      },
+      {
+        section: '🏗️ Phases de production',
+        content: [
+          '🟢 Phase 1 — Pré-production : scope verrouillé, document combat, répartition rôles',
+          '🟡 Phase 2 — Prototype jouable : contrôles, stamina, combat basique',
+          '🟠 Phase 3 — Ennemis & Boss : ennemi standard, prototype boss, design patterns',
+          '🔵 Phase 4 — Level Design : greybox forêt, placement ennemis, checkpoint',
+          '🟣 Phase 5 — Polishing : feedback joueur, équilibrage boss, UX/lisibilité',
+          '🔴 Phase 6 — Finalisation : tests externes, ajustements finaux, build final'
+        ]
+      },
+      {
+        section: '🧠 Règles d\'or',
+        content: [
+          '⚔️ Toute action a un coût',
+          '💀 Toute erreur est punissable',
+          '👁️ Toute attaque doit être lisible',
+          '⚡ La stamina est plus importante que les PV',
+          '🎯 Le joueur perd par impatience, pas par injustice',
+          '🚫 Si ça ne rend pas le combat meilleur, ça dégage'
+        ]
+      }
+    ]
+  },
+  {
     projectId: 'reseau-gns3',
     projectTitle: 'Réseau pour petite entreprise (GNS3)',
     images: [
