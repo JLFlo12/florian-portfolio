@@ -21,6 +21,26 @@ const Projects = () => {
       status: 'inProgress',
       technologies: ['Unreal Engine 5', 'Game Design', 'Level Design', 'IA'],
       thumbnail: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&h=600&fit=crop'
+    },
+    {
+      title: 'Jeu narratif 2.5D — Science-fiction émotionnelle',
+      description: {
+        fr: 'Jeu narratif 2.5D développé avec Godot — Science-fiction émotionnelle avec choix quantiques, deux fins et gameplay contemplatif',
+        en: '2.5D narrative game built with Godot — Emotional sci-fi with quantum choices, two endings and contemplative gameplay'
+      },
+      status: 'inProgress',
+      technologies: ['Godot 4', 'Game Design', 'Narration', 'Shaders'],
+      thumbnail: 'https://images.unsplash.com/photo-1534996858221-380b92700493?q=80&w=800&h=600&fit=crop'
+    },
+    {
+      title: 'Thornfall — Action RPG Souls-like',
+      description: {
+        fr: 'Démo Souls-like en Unreal Engine — Combat lourd et punitif, boss mémorable, forêt sinistre en dark fantasy',
+        en: 'Souls-like demo in Unreal Engine — Heavy punishing combat, memorable boss, dark fantasy sinister forest'
+      },
+      status: 'inProgress',
+      technologies: ['Unreal Engine', 'Combat System', 'IA Boss', 'Dark Fantasy'],
+      thumbnail: 'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?q=80&w=800&h=600&fit=crop'
     }
   ];
 
