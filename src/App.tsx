@@ -14,6 +14,7 @@ import ProjectGallery from "./pages/ProjectGallery";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Chatbot from "./pages/Chatbot";
+import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/games" element={<Games />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>

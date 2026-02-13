@@ -11,7 +11,8 @@ const resources = {
         projects: 'Projets',
         about: 'À propos',
         contact: 'Contact',
-        chatbot: 'Jarvis'
+        chatbot: 'Jarvis',
+        games: 'Games'
       },
       chatbot: {
         subtitle: 'Assistant IA — Posez-moi vos questions sur Florian',
@@ -96,7 +97,8 @@ const resources = {
         projects: 'Projects',
         about: 'About',
         contact: 'Contact',
-        chatbot: 'Jarvis'
+        chatbot: 'Jarvis',
+        games: 'Games'
       },
       chatbot: {
         subtitle: 'AI Assistant — Ask me anything about Florian',
