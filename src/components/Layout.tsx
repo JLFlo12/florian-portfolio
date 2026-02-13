@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sun, Moon, Globe, ChevronDown } from 'lucide-react';
+import { Sun, Moon, Globe, ChevronDown, Gamepad2 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import {
@@ -124,6 +124,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+
+              {/* Games Button */}
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/games">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`transition-all duration-300 ${
+                      location.pathname === '/games'
+                        ? 'text-primary'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                    }`}
+                  >
+                    <Gamepad2 className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </motion.div>
 
               {/* Theme Toggle */}
               <motion.div whileHover={{ scale: 1.05, rotate: 180 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.3 }}>
