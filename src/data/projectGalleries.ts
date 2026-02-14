@@ -340,26 +340,32 @@ export const projectGalleries: ProjectGallery[] = [
     ]
   },
   {
-    projectId: 'jeu-narratif-25d--science-fiction-motionnelle',
-    projectTitle: 'Jeu narratif 2.5D — Science-fiction émotionnelle',
+    projectId: 'if-you-stay--science-fiction-motionnelle',
+    projectTitle: 'If You Stay — Science-fiction émotionnelle',
     images: [
       {
         id: '1',
-        url: 'https://images.unsplash.com/photo-1534996858221-380b92700493?w=800&h=600&fit=crop',
-        title: 'Univers sci-fi émotionnel',
-        description: 'Ambiance contemplative et science-fiction'
+        url: '',
+        title: 'Concept Art — Univers',
+        description: 'Image à venir — Ambiance contemplative et science-fiction'
       },
       {
         id: '2',
-        url: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=600&fit=crop',
+        url: '',
         title: 'La plage — Monde B',
-        description: 'Lieu central du récit entre deux réalités'
+        description: 'Image à venir — Lieu central du récit entre deux réalités'
       },
       {
         id: '3',
-        url: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&h=600&fit=crop',
-        title: 'Singularités & trous noirs',
-        description: 'Effets visuels narratifs — collision des mondes'
+        url: '',
+        title: 'Singularités & Interférences',
+        description: 'Image à venir — Effets visuels narratifs'
+      },
+      {
+        id: '4',
+        url: '',
+        title: 'Eliott & Lina',
+        description: 'Image à venir — Personnages principaux'
       }
     ],
     details: [
@@ -677,21 +683,27 @@ export const projectGalleries: ProjectGallery[] = [
     images: [
       {
         id: '1',
-        url: 'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=800&h=600&fit=crop',
+        url: '',
         title: 'Forêt sinistre',
-        description: 'Environnement dark fantasy oppressant'
+        description: 'Image à venir — Environnement dark fantasy oppressant'
       },
       {
         id: '2',
-        url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
+        url: '',
         title: 'Combat Souls-like',
-        description: 'Système de combat lourd et punitif'
+        description: 'Image à venir — Système de combat lourd et punitif'
       },
       {
         id: '3',
-        url: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800&h=600&fit=crop',
+        url: '',
         title: 'Boss — Althéon',
-        description: 'Gardien de Noirracine — Boss final de la démo'
+        description: 'Image à venir — Gardien de Noirracine'
+      },
+      {
+        id: '4',
+        url: '',
+        title: 'Level Design — Forêt',
+        description: 'Image à venir — Zone principale interconnectée'
       }
     ],
     details: [

@@ -12,13 +12,13 @@ const CANVAS_HEIGHT = 250;
 const GROUND_Y = 200;
 const DINO_WIDTH = 40;
 const DINO_HEIGHT = 50;
-const GRAVITY = 0.6;
-const JUMP_FORCE = -12;
-const OBSTACLE_WIDTH = 20;
-const OBSTACLE_MIN_HEIGHT = 30;
-const OBSTACLE_MAX_HEIGHT = 55;
-const GAME_SPEED_INITIAL = 4;
-const GAME_SPEED_INCREMENT = 0.001;
+const GRAVITY = 0.45;
+const JUMP_FORCE = -11;
+const OBSTACLE_WIDTH = 18;
+const OBSTACLE_MIN_HEIGHT = 25;
+const OBSTACLE_MAX_HEIGHT = 42;
+const GAME_SPEED_INITIAL = 3;
+const GAME_SPEED_INCREMENT = 0.0006;
 
 const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -164,7 +164,7 @@ const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
       state.gameSpeed += GAME_SPEED_INCREMENT;
       state.score += state.gameSpeed * 0.05;
 
-      if (state.frameCount % Math.max(60, Math.floor(120 - state.score / 5)) === 0) {
+      if (state.frameCount % Math.max(80, Math.floor(150 - state.score / 5)) === 0) {
         const h = OBSTACLE_MIN_HEIGHT + Math.random() * (OBSTACLE_MAX_HEIGHT - OBSTACLE_MIN_HEIGHT);
         state.obstacles.push({ x: CANVAS_WIDTH, height: h });
       }
