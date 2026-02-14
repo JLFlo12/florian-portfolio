@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, Play, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DinoRunner from '@/components/games/DinoRunner';
+import FlappyBird from '@/components/games/FlappyBird';
 
 interface GameCard {
   id: string;
@@ -21,16 +22,16 @@ const games: GameCard[] = [
     available: true,
   },
   {
+    id: 'flappy',
+    name: 'Flappy Bird',
+    description: 'Passe entre les tuyaux. Un clic = un flap.',
+    icon: <span className="text-3xl">🐦</span>,
+    available: true,
+  },
+  {
     id: 'coming-1',
     name: 'Bientôt…',
     description: 'Un nouveau mini-jeu arrive.',
-    icon: <Lock className="h-8 w-8 text-muted-foreground" />,
-    available: false,
-  },
-  {
-    id: 'coming-2',
-    name: 'Bientôt…',
-    description: 'Encore un autre mini-jeu en préparation.',
     icon: <Lock className="h-8 w-8 text-muted-foreground" />,
     available: false,
   },
@@ -39,21 +40,44 @@ const games: GameCard[] = [
 const Games = () => {
   const [activeGame, setActiveGame] = useState<string | null>(null);
 
+  const renderGame = () => {
+    if (activeGame === 'dino') {
+      return (
+        <motion.div
+          key="dino"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col items-center pt-10"
+        >
+          <h2 className="text-3xl font-bold text-primary mb-8">Dino Runner</h2>
+          <DinoRunner onBack={() => setActiveGame(null)} />
+        </motion.div>
+      );
+    }
+    if (activeGame === 'flappy') {
+      return (
+        <motion.div
+          key="flappy"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col items-center pt-10"
+        >
+          <h2 className="text-3xl font-bold text-primary mb-8">Flappy Bird</h2>
+          <FlappyBird onBack={() => setActiveGame(null)} />
+        </motion.div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="max-w-5xl mx-auto">
         <AnimatePresence mode="wait">
-          {activeGame === 'dino' ? (
-            <motion.div
-              key="dino"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="flex flex-col items-center pt-10"
-            >
-              <h2 className="text-3xl font-bold text-primary mb-8">Dino Runner</h2>
-              <DinoRunner onBack={() => setActiveGame(null)} />
-            </motion.div>
+          {activeGame ? (
+            renderGame()
           ) : (
             <motion.div
               key="menu"

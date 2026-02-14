@@ -23,7 +23,7 @@ const Projects = () => {
       thumbnail: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&h=600&fit=crop'
     },
     {
-      title: 'Jeu narratif 2.5D — Science-fiction émotionnelle',
+      title: 'If You Stay — Science-fiction émotionnelle',
       description: {
         fr: 'Jeu narratif 2.5D développé avec Godot — Science-fiction émotionnelle avec choix quantiques, deux fins et gameplay contemplatif',
         en: '2.5D narrative game built with Godot — Emotional sci-fi with quantum choices, two endings and contemplative gameplay'

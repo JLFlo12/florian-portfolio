@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette, ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
@@ -241,11 +241,18 @@ const ProjectGallery = () => {
               <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
-                    <img
-                      src={image.url}
-                      alt={image.title}
-                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    {image.url ? (
+                      <img
+                        src={image.url}
+                        alt={image.title}
+                        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-64 bg-muted/50 flex flex-col items-center justify-center gap-2 border-b border-border">
+                        <ImageIcon className="h-12 w-12 text-muted-foreground/40" />
+                        <span className="text-sm text-muted-foreground/60">Image à venir</span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute top-4 right-4">
                         <ExternalLink className="h-5 w-5 text-white" />
