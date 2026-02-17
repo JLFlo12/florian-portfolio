@@ -11,12 +11,14 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 600;
 const BIRD_SIZE = 24;
 const BIRD_X = 80;
-const GRAVITY = 0.35;
-const FLAP_FORCE = -6.5;
+const GRAVITY = 0.28;
+const FLAP_FORCE = -5.8;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 150;
-const PIPE_SPEED_INITIAL = 2.5;
-const PIPE_SPAWN_INTERVAL = 100; // frames
+const PIPE_GAP = 200;
+const PIPE_GAP_MIN = 165;
+const PIPE_SPEED_INITIAL = 2.0;
+const PIPE_SPAWN_INTERVAL = 120; // frames
+const HITBOX_SHRINK = 4; // pixels to shrink bird hitbox
 
 const FlappyBird: React.FC<FlappyBirdProps> = ({ onBack }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -210,13 +212,13 @@ const FlappyBird: React.FC<FlappyBirdProps> = ({ onBack }) => {
         state.pipes.push({ x: CANVAS_WIDTH, topH, scored: false });
       }
 
-      // Speed increase
-      if (state.score > 0 && Math.floor(state.score) % 5 === 0) {
-        state.speed = PIPE_SPEED_INITIAL + Math.floor(state.score / 5) * 0.05;
+      // Speed increase — only after 5 points, very gradual
+      if (state.score >= 5) {
+        state.speed = PIPE_SPEED_INITIAL + (state.score - 5) * 0.03;
       }
 
-      // Update gap (slight reduction after score 15)
-      const currentGap = Math.max(120, PIPE_GAP - Math.floor(state.score / 15) * 5);
+      // Update gap — very gradual reduction, never below PIPE_GAP_MIN
+      const currentGap = Math.max(PIPE_GAP_MIN, PIPE_GAP - Math.floor(state.score / 8) * 3);
 
       // Move pipes & check collision
       state.pipes = state.pipes.filter(pipe => {
@@ -229,12 +231,12 @@ const FlappyBird: React.FC<FlappyBirdProps> = ({ onBack }) => {
           setScore(state.score);
         }
 
-        // Collision with pipes
+        // Collision with pipes (shrunken hitbox)
         if (
-          BIRD_X + BIRD_SIZE > pipe.x &&
-          BIRD_X < pipe.x + PIPE_WIDTH
+          BIRD_X + BIRD_SIZE - HITBOX_SHRINK > pipe.x &&
+          BIRD_X + HITBOX_SHRINK < pipe.x + PIPE_WIDTH
         ) {
-          if (state.birdY < pipe.topH || state.birdY + BIRD_SIZE > pipe.topH + currentGap) {
+          if (state.birdY + HITBOX_SHRINK < pipe.topH || state.birdY + BIRD_SIZE - HITBOX_SHRINK > pipe.topH + currentGap) {
             state.gameOver = true;
             setGameOver(true);
             setScore(Math.floor(state.score));
