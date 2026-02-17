@@ -12,13 +12,15 @@ const CANVAS_HEIGHT = 250;
 const GROUND_Y = 200;
 const DINO_WIDTH = 40;
 const DINO_HEIGHT = 50;
-const GRAVITY = 0.45;
-const JUMP_FORCE = -11;
+const GRAVITY = 0.4;
+const JUMP_FORCE = -10.5;
 const OBSTACLE_WIDTH = 18;
-const OBSTACLE_MIN_HEIGHT = 25;
-const OBSTACLE_MAX_HEIGHT = 42;
-const GAME_SPEED_INITIAL = 3;
-const GAME_SPEED_INCREMENT = 0.0006;
+const OBSTACLE_MIN_HEIGHT = 22;
+const OBSTACLE_MAX_HEIGHT = 38;
+const GAME_SPEED_INITIAL = 2.6;
+const GAME_SPEED_INCREMENT = 0.0003;
+const MIN_OBS_GAP = 260;
+const MAX_OBS_GAP = 520;
 
 const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -31,6 +33,7 @@ const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
     dinoVelocity: 0,
     isJumping: false,
     obstacles: [] as { x: number; height: number }[],
+    lastObsX: CANVAS_WIDTH as number,
     gameSpeed: GAME_SPEED_INITIAL,
     score: 0,
     frameCount: 0,
@@ -45,6 +48,7 @@ const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
       dinoVelocity: 0,
       isJumping: false,
       obstacles: [],
+      lastObsX: CANVAS_WIDTH,
       gameSpeed: GAME_SPEED_INITIAL,
       score: 0,
       frameCount: 0,
@@ -164,9 +168,22 @@ const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
       state.gameSpeed += GAME_SPEED_INCREMENT;
       state.score += state.gameSpeed * 0.05;
 
-      if (state.frameCount % Math.max(80, Math.floor(150 - state.score / 5)) === 0) {
+      // Spawn with min/max gap
+      const dynamicMinGap = MIN_OBS_GAP + state.gameSpeed * 8;
+      const rightmostObs = state.obstacles.length > 0 ? Math.max(...state.obstacles.map(o => o.x)) : -999;
+      const distFromLast = CANVAS_WIDTH - rightmostObs;
+      if (distFromLast >= dynamicMinGap && state.frameCount % 30 === 0) {
+        if (distFromLast <= MAX_OBS_GAP || Math.random() < 0.4) {
+          const h = OBSTACLE_MIN_HEIGHT + Math.random() * (OBSTACLE_MAX_HEIGHT - OBSTACLE_MIN_HEIGHT);
+          state.obstacles.push({ x: CANVAS_WIDTH, height: h });
+          state.lastObsX = CANVAS_WIDTH;
+        }
+      }
+      // Force spawn if gap too big
+      if (state.obstacles.length === 0 || CANVAS_WIDTH - rightmostObs > MAX_OBS_GAP) {
         const h = OBSTACLE_MIN_HEIGHT + Math.random() * (OBSTACLE_MAX_HEIGHT - OBSTACLE_MIN_HEIGHT);
         state.obstacles.push({ x: CANVAS_WIDTH, height: h });
+        state.lastObsX = CANVAS_WIDTH;
       }
 
       state.obstacles = state.obstacles.filter(obs => {
@@ -176,11 +193,12 @@ const DinoRunner: React.FC<DinoRunnerProps> = ({ onBack }) => {
 
       // Collision
       const dinoX = 60;
+      const HITBOX_MARGIN = 6;
       for (const obs of state.obstacles) {
         if (
-          dinoX + DINO_WIDTH - 5 > obs.x &&
-          dinoX + 5 < obs.x + OBSTACLE_WIDTH &&
-          state.dinoY + DINO_HEIGHT > GROUND_Y - obs.height
+          dinoX + DINO_WIDTH - HITBOX_MARGIN > obs.x &&
+          dinoX + HITBOX_MARGIN < obs.x + OBSTACLE_WIDTH &&
+          state.dinoY + DINO_HEIGHT - 2 > GROUND_Y - obs.height
         ) {
           state.gameOver = true;
           setGameOver(true);

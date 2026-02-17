@@ -4,6 +4,7 @@ import { Gamepad2, Play, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DinoRunner from '@/components/games/DinoRunner';
 import FlappyBird from '@/components/games/FlappyBird';
+import SnakeGame from '@/components/games/SnakeGame';
 
 interface GameCard {
   id: string;
@@ -26,6 +27,13 @@ const games: GameCard[] = [
     name: 'Flappy Bird',
     description: 'Passe entre les tuyaux. Un clic = un flap.',
     icon: <span className="text-3xl">🐦</span>,
+    available: true,
+  },
+  {
+    id: 'snake',
+    name: 'Snake',
+    description: 'Mange, grandis, évite-toi.',
+    icon: <span className="text-3xl">🐍</span>,
     available: true,
   },
   {
@@ -66,6 +74,20 @@ const Games = () => {
         >
           <h2 className="text-3xl font-bold text-primary mb-8">Flappy Bird</h2>
           <FlappyBird onBack={() => setActiveGame(null)} />
+        </motion.div>
+      );
+    }
+    if (activeGame === 'snake') {
+      return (
+        <motion.div
+          key="snake"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col items-center pt-10"
+        >
+          <h2 className="text-3xl font-bold text-primary mb-8">Snake</h2>
+          <SnakeGame onBack={() => setActiveGame(null)} />
         </motion.div>
       );
     }
