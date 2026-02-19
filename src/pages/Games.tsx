@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Play, Lock } from 'lucide-react';
+import { Gamepad2, Play, Lock, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DinoRunner from '@/components/games/DinoRunner';
 import FlappyBird from '@/components/games/FlappyBird';
 import SnakeGame from '@/components/games/SnakeGame';
+import GuessBuilding from '@/components/games/GuessBuilding';
 
 interface GameCard {
   id: string;
@@ -34,6 +35,13 @@ const games: GameCard[] = [
     name: 'Snake',
     description: 'Mange, grandis, évite-toi.',
     icon: <span className="text-3xl">🐍</span>,
+    available: true,
+  },
+  {
+    id: 'guess-building',
+    name: 'Guess the Building',
+    description: 'Reconnais les bâtiments iconiques du monde.',
+    icon: <Building2 className="h-8 w-8 text-primary" />,
     available: true,
   },
   {
@@ -88,6 +96,20 @@ const Games = () => {
         >
           <h2 className="text-3xl font-bold text-primary mb-8">Snake</h2>
           <SnakeGame onBack={() => setActiveGame(null)} />
+        </motion.div>
+      );
+    }
+    if (activeGame === 'guess-building') {
+      return (
+        <motion.div
+          key="guess-building"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col items-center pt-10 w-full"
+        >
+          <h2 className="text-3xl font-bold text-primary mb-8">Guess the Building</h2>
+          <GuessBuilding onBack={() => setActiveGame(null)} />
         </motion.div>
       );
     }
