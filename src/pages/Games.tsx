@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Play, Lock, Building2 } from 'lucide-react';
+import { Gamepad2, Play, Lock, Building2, Construction } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DinoRunner from '@/components/games/DinoRunner';
 import FlappyBird from '@/components/games/FlappyBird';
 import SnakeGame from '@/components/games/SnakeGame';
 import GuessBuilding from '@/components/games/GuessBuilding';
+import TowerCrane from '@/components/games/TowerCrane';
 
 interface GameCard {
   id: string;
@@ -42,6 +43,13 @@ const games: GameCard[] = [
     name: 'Guess the Building',
     description: 'Reconnais les bâtiments iconiques du monde.',
     icon: <Building2 className="h-8 w-8 text-primary" />,
+    available: true,
+  },
+  {
+    id: 'tower-crane',
+    name: 'Tower Crane Challenge',
+    description: 'Construis la tour la plus stable possible.',
+    icon: <Construction className="h-8 w-8 text-primary" />,
     available: true,
   },
   {
@@ -110,6 +118,20 @@ const Games = () => {
         >
           <h2 className="text-3xl font-bold text-primary mb-8">Guess the Building</h2>
           <GuessBuilding onBack={() => setActiveGame(null)} />
+        </motion.div>
+      );
+    }
+    if (activeGame === 'tower-crane') {
+      return (
+        <motion.div
+          key="tower-crane"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col items-center pt-10 w-full"
+        >
+          <h2 className="text-3xl font-bold text-primary mb-8">Tower Crane Challenge</h2>
+          <TowerCrane onBack={() => setActiveGame(null)} />
         </motion.div>
       );
     }
