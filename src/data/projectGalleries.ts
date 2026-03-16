@@ -372,21 +372,37 @@ export const projectGalleries: ProjectGallery[] = [
       {
         section: '📋 Informations générales',
         content: [
-          '🎮 Genre : Jeu narratif 2.5D — Science-fiction émotionnelle',
-          '⚙️ Moteur : Godot 4.x',
-          '💻 Plateforme cible : PC',
+          '🎮 Titre de travail : "If You Stay"',
+          '🎯 Genre : Jeu narratif 2.5D — Science-fiction émotionnelle',
+          '👁️ Perspective : 2.5D (vue latérale avec profondeur)',
+          '⚙️ Moteur de jeu : Godot 4.x',
+          '💻 Plateforme cible : PC (Windows)',
+          '🎨 Style visuel : Contemplatif, minimaliste, émotionnel',
           '⏱️ Durée de jeu estimée : 20–40 minutes (démo)',
-          '🎨 Style : Contemplatif, minimaliste, émotionnel',
+          '👥 Équipe : 1 personne',
           '🎯 Objectif : Explorer le deuil, l\'amour et la mécanique quantique à travers le gameplay'
         ]
       },
       {
-        section: '📖 Concept — Pitch',
+        section: '📖 Concept du jeu - Pitch',
         content: [
           '🎭 Eliott, un lycéen brillant mais détaché, vit entre deux réalités depuis la mort de sa sœur Élise.',
           '🌊 La plage est le point de convergence : un souvenir figé qui refuse de disparaître.',
           '💫 L\'arrivée de Lina stabilise ses "interférences" — mais les deux mondes entrent en collision.',
           '🔮 Le joueur fait face à un choix quantique : observer pour rester, ou lâcher et disparaître.'
+        ]
+      },
+      {
+        section: '🎮 Caractéristiques principales',
+        content: [
+          '🌍 Deux mondes superposés (Monde A – présent, Monde B – souvenir)',
+          '🌀 Système d\'interférences visuelles et sonores narratives',
+          '💬 Dialogues à choix impactant les variables relationnelles',
+          '🕳️ Singularités : zones aspirantes avec feedback visuel et sonore',
+          '💕 Mini-jeux émotionnels (marche synchronisée, révisions, lancers de cailloux)',
+          '🔮 Choix final quantique déterminant la fin',
+          '🎵 Audio adaptatif selon l\'état du monde (Normal, Interference, Void)',
+          '😢 Thématique : deuil, amour, présence, mécanique quantique'
         ]
       },
       {
