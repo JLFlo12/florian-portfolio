@@ -10,8 +10,8 @@ interface TowerCraneProps {
 // ── Constants ──
 const CANVAS_W = 480;
 const CANVAS_H = 680;
-const GRAVITY = 0.22;
-const CRANE_SPEED_BASE = 1.8;
+const GRAVITY = 0.26;
+const CRANE_SPEED_BASE = 2.1;
 const PLATFORM_W = 160;
 const PLATFORM_H = 16;
 const PLATFORM_X = (CANVAS_W - PLATFORM_W) / 2;
