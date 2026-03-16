@@ -690,6 +690,48 @@ export const projectGalleries: ProjectGallery[] = [
           '💀 Fin tragique : Le système se ferme — Lina revient, mais Eliott n\'est plus là',
           '💡 Message final : "Observer, c\'est rester. Lâcher, c\'est disparaître."'
         ]
+      },
+      {
+        section: '🛠️ Outils et ressources',
+        content: [
+          '⚙️ Moteur : Godot 4.x',
+          '📋 Gestion de projet : Notion',
+          '🔄 Versioning : GitHub',
+          '🎨 Assets : Sprites personnalisés, shaders GLSL custom pour les interférences',
+          '🎵 Audio : Compositions minimalistes (piano, pads), Freesound.org pour ambiance',
+          '📝 Documentation : Notion (GDD, suivi technique, narrative design)',
+          '🧪 Tests : Builds de test à chaque chapitre complété'
+        ]
+      },
+      {
+        section: '📊 Rétroplanning synthétique',
+        content: [
+          '📅 Semaine 1-2 : Pré-production — GDD, moodboard, architecture Godot, prototype déplacement + caméra',
+          '📅 Semaine 3-4 : Système de dialogue JSON + Story Manager + flags narratifs',
+          '📅 Semaine 5-6 : Pipeline maps (Monde A / B / Fusion) + transitions de scènes',
+          '📅 Semaine 7-8 : Interférences (shaders + audio) + singularités (Area3D)',
+          '📅 Semaine 9-10 : Mini-jeux émotionnels + cutscenes narratives',
+          '📅 Semaine 11-12 : Choix final quantique + deux épilogues + polish audio/FX',
+          '📅 Semaine 13-14 : Tests, équilibrage, sauvegardes, build final démo'
+        ]
+      },
+      {
+        section: '⚠️ Risques et contraintes',
+        content: [
+          '🔴 Développement solo (Impact élevé) → Solution : Scope limité à une démo de 20-40 minutes',
+          '🟠 Shaders complexes pour interférences (Impact moyen) → Solution : Prototyper tôt, simplifier si nécessaire',
+          '🟠 Narration lourde à intégrer (Impact moyen) → Solution : Système JSON modulaire, dialogues testés séparément',
+          '🔴 Équilibrage émotionnel (Impact élevé) → Solution : Playtests externes dès le chapitre 3'
+        ]
+      },
+      {
+        section: '🎯 Livrable final attendu',
+        content: [
+          '✅ Démo jouable et complète sur PC',
+          '⏱️ Durée de jeu estimée : 20 à 40 minutes',
+          '🎭 Expérience narrative immersive et émotionnelle',
+          '💻 Build final compilé et testé sous Windows'
+        ]
       }
     ]
   },
