@@ -236,7 +236,7 @@ const TowerCrane: React.FC<TowerCraneProps> = ({ onBack }) => {
               endGame(s);
             } else {
               s.pending = { shape: randomShape(), color: randomColor() };
-              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.05;
+              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.07;
             }
           } else if (landedOnSurface && b.y >= landY) {
             // Landed!
