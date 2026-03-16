@@ -372,21 +372,37 @@ export const projectGalleries: ProjectGallery[] = [
       {
         section: '📋 Informations générales',
         content: [
-          '🎮 Genre : Jeu narratif 2.5D — Science-fiction émotionnelle',
-          '⚙️ Moteur : Godot 4.x',
-          '💻 Plateforme cible : PC',
+          '🎮 Titre de travail : "If You Stay"',
+          '🎯 Genre : Jeu narratif 2.5D — Science-fiction émotionnelle',
+          '👁️ Perspective : 2.5D (vue latérale avec profondeur)',
+          '⚙️ Moteur de jeu : Godot 4.x',
+          '💻 Plateforme cible : PC (Windows)',
+          '🎨 Style visuel : Contemplatif, minimaliste, émotionnel',
           '⏱️ Durée de jeu estimée : 20–40 minutes (démo)',
-          '🎨 Style : Contemplatif, minimaliste, émotionnel',
+          '👥 Équipe : 1 personne',
           '🎯 Objectif : Explorer le deuil, l\'amour et la mécanique quantique à travers le gameplay'
         ]
       },
       {
-        section: '📖 Concept — Pitch',
+        section: '📖 Concept du jeu - Pitch',
         content: [
           '🎭 Eliott, un lycéen brillant mais détaché, vit entre deux réalités depuis la mort de sa sœur Élise.',
           '🌊 La plage est le point de convergence : un souvenir figé qui refuse de disparaître.',
           '💫 L\'arrivée de Lina stabilise ses "interférences" — mais les deux mondes entrent en collision.',
           '🔮 Le joueur fait face à un choix quantique : observer pour rester, ou lâcher et disparaître.'
+        ]
+      },
+      {
+        section: '🎮 Caractéristiques principales',
+        content: [
+          '🌍 Deux mondes superposés (Monde A – présent, Monde B – souvenir)',
+          '🌀 Système d\'interférences visuelles et sonores narratives',
+          '💬 Dialogues à choix impactant les variables relationnelles',
+          '🕳️ Singularités : zones aspirantes avec feedback visuel et sonore',
+          '💕 Mini-jeux émotionnels (marche synchronisée, révisions, lancers de cailloux)',
+          '🔮 Choix final quantique déterminant la fin',
+          '🎵 Audio adaptatif selon l\'état du monde (Normal, Interference, Void)',
+          '😢 Thématique : deuil, amour, présence, mécanique quantique'
         ]
       },
       {
@@ -674,6 +690,48 @@ export const projectGalleries: ProjectGallery[] = [
           '💀 Fin tragique : Le système se ferme — Lina revient, mais Eliott n\'est plus là',
           '💡 Message final : "Observer, c\'est rester. Lâcher, c\'est disparaître."'
         ]
+      },
+      {
+        section: '🛠️ Outils et ressources',
+        content: [
+          '⚙️ Moteur : Godot 4.x',
+          '📋 Gestion de projet : Notion',
+          '🔄 Versioning : GitHub',
+          '🎨 Assets : Sprites personnalisés, shaders GLSL custom pour les interférences',
+          '🎵 Audio : Compositions minimalistes (piano, pads), Freesound.org pour ambiance',
+          '📝 Documentation : Notion (GDD, suivi technique, narrative design)',
+          '🧪 Tests : Builds de test à chaque chapitre complété'
+        ]
+      },
+      {
+        section: '📊 Rétroplanning synthétique',
+        content: [
+          '📅 Semaine 1-2 : Pré-production — GDD, moodboard, architecture Godot, prototype déplacement + caméra',
+          '📅 Semaine 3-4 : Système de dialogue JSON + Story Manager + flags narratifs',
+          '📅 Semaine 5-6 : Pipeline maps (Monde A / B / Fusion) + transitions de scènes',
+          '📅 Semaine 7-8 : Interférences (shaders + audio) + singularités (Area3D)',
+          '📅 Semaine 9-10 : Mini-jeux émotionnels + cutscenes narratives',
+          '📅 Semaine 11-12 : Choix final quantique + deux épilogues + polish audio/FX',
+          '📅 Semaine 13-14 : Tests, équilibrage, sauvegardes, build final démo'
+        ]
+      },
+      {
+        section: '⚠️ Risques et contraintes',
+        content: [
+          '🔴 Développement solo (Impact élevé) → Solution : Scope limité à une démo de 20-40 minutes',
+          '🟠 Shaders complexes pour interférences (Impact moyen) → Solution : Prototyper tôt, simplifier si nécessaire',
+          '🟠 Narration lourde à intégrer (Impact moyen) → Solution : Système JSON modulaire, dialogues testés séparément',
+          '🔴 Équilibrage émotionnel (Impact élevé) → Solution : Playtests externes dès le chapitre 3'
+        ]
+      },
+      {
+        section: '🎯 Livrable final attendu',
+        content: [
+          '✅ Démo jouable et complète sur PC',
+          '⏱️ Durée de jeu estimée : 20 à 40 minutes',
+          '🎭 Expérience narrative immersive et émotionnelle',
+          '💻 Build final compilé et testé sous Windows'
+        ]
       }
     ]
   },
@@ -710,23 +768,37 @@ export const projectGalleries: ProjectGallery[] = [
       {
         section: '📋 Informations générales',
         content: [
-          '🎮 Titre : Thornfall',
+          '🎮 Titre de travail : "Thornfall"',
           '🎯 Genre : Action RPG — Souls-like',
-          '⚙️ Moteur : Unreal Engine',
-          '💻 Plateforme : PC (manette recommandée)',
-          '👥 Équipe : 2 programmeurs + 1 game designer',
+          '👁️ Perspective : Troisième personne',
+          '⚙️ Moteur de jeu : Unreal Engine 5',
+          '💻 Plateforme cible : PC (manette recommandée)',
+          '🎨 Style visuel : Dark fantasy, couleurs désaturées, brume et ombres',
           '⏱️ Durée de la démo : ~20 minutes',
-          '🎨 Style : Dark fantasy, couleurs désaturées, brume et ombres'
+          '👥 Équipe : 2 programmeurs + 1 game designer',
+          '🎯 Objectif : Créer une démo Souls-like courte mais intense, centrée sur un combat punitif et un boss mémorable'
         ]
       },
       {
-        section: '📖 Vision & Objectif de la démo',
+        section: '📖 Concept du jeu - Pitch',
         content: [
-          'La démo vise à proposer une expérience Souls-like courte mais intense, centrée sur :',
-          '⚔️ Un combat lourd et punitif',
-          '👹 Un boss mémorable et très difficile',
-          '💀 Un apprentissage par la mort et l\'observation',
+          '⚔️ Le joueur explore une forêt sinistre et corrompue, affrontant des ennemis standards avant un boss dévastateur.',
+          '💀 Le combat est lourd, engageant et punitif : chaque action a un coût en stamina, chaque erreur est punissable.',
+          '🧠 La mort est pédagogique : le joueur apprend les patterns du boss par l\'observation et la patience.',
           '🎯 L\'objectif n\'est pas de raconter toute l\'histoire, mais de faire ressentir la qualité du gameplay.'
+        ]
+      },
+      {
+        section: '🎮 Caractéristiques principales',
+        content: [
+          '🗺️ Zone unique interconnectée (forêt sinistre) avec chemins secondaires et raccourcis',
+          '⚔️ Combat au corps à corps lourd (grosse épée, 1 coup = 1 décision)',
+          '🔋 Gestion stricte de la stamina (toutes les actions consomment de l\'endurance)',
+          '🛡️ Système de garde avec garde brisée à 0 stamina (1.5s de stun)',
+          '🏃 Esquive avec i-frames de 0.35s (pas de spam possible)',
+          '👹 Boss final : Althéon, Gardien de Noirracine (3500 PV, 6 attaques uniques)',
+          '🔥 Phase critique du boss à ≤30% PV (rythme accéléré, pas de nouvelles attaques)',
+          '😨 Thématique : isolement, tension, apprentissage par la mort'
         ]
       },
       {
@@ -1014,6 +1086,49 @@ export const projectGalleries: ProjectGallery[] = [
           '✅ Prouver la solidité du gameplay Souls-like',
           '✅ Marquer le joueur avec un boss mémorable',
           '✅ Démontrer le potentiel du projet et de l\'équipe'
+        ]
+      },
+      {
+        section: '🛠️ Outils et ressources',
+        content: [
+          '⚙️ Moteur : Unreal Engine 5.3+',
+          '📋 Gestion de projet : Notion / Trello',
+          '🔄 Versioning : GitHub ou Perforce',
+          '🎨 Assets : Unreal Marketplace, Quixel Megascans, Mixamo (animations)',
+          '🎵 Audio : Freesound.org, compositions custom pour le boss',
+          '📝 Documentation : Notion (GDD, combat doc, blueprint architecture)',
+          '🧪 Tests : Builds mensuels, playtests externes dès la phase 5'
+        ]
+      },
+      {
+        section: '📊 Rétroplanning synthétique',
+        content: [
+          '📅 Semaine 1-2 : Pré-production — Scope verrouillé, combat doc finalisé, répartition des rôles',
+          '📅 Semaine 3-4 : Prototype jouable — Contrôles joueur, caméra, roulade, garde',
+          '📅 Semaine 5-6 : Système de stamina — Consommation, blocage, feedback visuel, tests',
+          '📅 Semaine 7-8 : Combat basique — Attaques légères/lourdes, hitbox, dégâts, game feel',
+          '📅 Semaine 9-10 : Ennemis & Boss — IA standard, prototype boss, patterns grossiers',
+          '📅 Semaine 11-12 : Level Design — Greybox forêt, placement ennemis, checkpoint',
+          '📅 Semaine 13-14 : Polishing — Feedback joueur, sons d\'impact, équilibrage boss, UX',
+          '📅 Semaine 15-16 : Finalisation — Tests externes, ajustements, menu, build final'
+        ]
+      },
+      {
+        section: '⚠️ Risques et contraintes',
+        content: [
+          '🔴 Équilibrage du boss (Impact élevé) → Solution : Playtests externes réguliers, observer sans expliquer',
+          '🟠 Performance Unreal (Impact moyen) → Solution : Optimiser tôt, LOD et occlusion dès le greybox',
+          '🟠 Animations de combat (Impact moyen) → Solution : Mixamo + retouches manuelles',
+          '🔴 Coordination équipe réduite (Impact élevé) → Solution : Rôles clairs, builds hebdomadaires, communication constante'
+        ]
+      },
+      {
+        section: '🎯 Livrable final attendu',
+        content: [
+          '✅ Démo jouable et complète sur PC',
+          '⏱️ Durée de jeu estimée : ~20 minutes',
+          '⚔️ Combat Souls-like solide avec boss mémorable',
+          '💻 Build final compilé et testé sous Windows (clavier/manette)'
         ]
       }
     ]

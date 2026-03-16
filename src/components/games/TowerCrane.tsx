@@ -10,8 +10,8 @@ interface TowerCraneProps {
 // ── Constants ──
 const CANVAS_W = 480;
 const CANVAS_H = 680;
-const GRAVITY = 0.22;
-const CRANE_SPEED_BASE = 1.8;
+const GRAVITY = 0.26;
+const CRANE_SPEED_BASE = 2.1;
 const PLATFORM_W = 160;
 const PLATFORM_H = 16;
 const PLATFORM_X = (CANVAS_W - PLATFORM_W) / 2;
@@ -236,7 +236,7 @@ const TowerCrane: React.FC<TowerCraneProps> = ({ onBack }) => {
               endGame(s);
             } else {
               s.pending = { shape: randomShape(), color: randomColor() };
-              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.05;
+              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.07;
             }
           } else if (landedOnSurface && b.y >= landY) {
             // Landed!
@@ -297,7 +297,7 @@ const TowerCrane: React.FC<TowerCraneProps> = ({ onBack }) => {
               s.blocks.push(b);
               s.dropping = null;
               s.pending = { shape: randomShape(), color: randomColor() };
-              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.04;
+              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.06;
             }
           }
         }
