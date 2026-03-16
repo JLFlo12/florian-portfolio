@@ -768,23 +768,37 @@ export const projectGalleries: ProjectGallery[] = [
       {
         section: '📋 Informations générales',
         content: [
-          '🎮 Titre : Thornfall',
+          '🎮 Titre de travail : "Thornfall"',
           '🎯 Genre : Action RPG — Souls-like',
-          '⚙️ Moteur : Unreal Engine',
-          '💻 Plateforme : PC (manette recommandée)',
-          '👥 Équipe : 2 programmeurs + 1 game designer',
+          '👁️ Perspective : Troisième personne',
+          '⚙️ Moteur de jeu : Unreal Engine 5',
+          '💻 Plateforme cible : PC (manette recommandée)',
+          '🎨 Style visuel : Dark fantasy, couleurs désaturées, brume et ombres',
           '⏱️ Durée de la démo : ~20 minutes',
-          '🎨 Style : Dark fantasy, couleurs désaturées, brume et ombres'
+          '👥 Équipe : 2 programmeurs + 1 game designer',
+          '🎯 Objectif : Créer une démo Souls-like courte mais intense, centrée sur un combat punitif et un boss mémorable'
         ]
       },
       {
-        section: '📖 Vision & Objectif de la démo',
+        section: '📖 Concept du jeu - Pitch',
         content: [
-          'La démo vise à proposer une expérience Souls-like courte mais intense, centrée sur :',
-          '⚔️ Un combat lourd et punitif',
-          '👹 Un boss mémorable et très difficile',
-          '💀 Un apprentissage par la mort et l\'observation',
+          '⚔️ Le joueur explore une forêt sinistre et corrompue, affrontant des ennemis standards avant un boss dévastateur.',
+          '💀 Le combat est lourd, engageant et punitif : chaque action a un coût en stamina, chaque erreur est punissable.',
+          '🧠 La mort est pédagogique : le joueur apprend les patterns du boss par l\'observation et la patience.',
           '🎯 L\'objectif n\'est pas de raconter toute l\'histoire, mais de faire ressentir la qualité du gameplay.'
+        ]
+      },
+      {
+        section: '🎮 Caractéristiques principales',
+        content: [
+          '🗺️ Zone unique interconnectée (forêt sinistre) avec chemins secondaires et raccourcis',
+          '⚔️ Combat au corps à corps lourd (grosse épée, 1 coup = 1 décision)',
+          '🔋 Gestion stricte de la stamina (toutes les actions consomment de l\'endurance)',
+          '🛡️ Système de garde avec garde brisée à 0 stamina (1.5s de stun)',
+          '🏃 Esquive avec i-frames de 0.35s (pas de spam possible)',
+          '👹 Boss final : Althéon, Gardien de Noirracine (3500 PV, 6 attaques uniques)',
+          '🔥 Phase critique du boss à ≤30% PV (rythme accéléré, pas de nouvelles attaques)',
+          '😨 Thématique : isolement, tension, apprentissage par la mort'
         ]
       },
       {
