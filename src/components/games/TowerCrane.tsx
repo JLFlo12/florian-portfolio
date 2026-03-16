@@ -297,7 +297,7 @@ const TowerCrane: React.FC<TowerCraneProps> = ({ onBack }) => {
               s.blocks.push(b);
               s.dropping = null;
               s.pending = { shape: randomShape(), color: randomColor() };
-              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.04;
+              s.craneSpeed = CRANE_SPEED_BASE + s.score * 0.06;
             }
           }
         }

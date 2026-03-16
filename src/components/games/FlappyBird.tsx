@@ -212,13 +212,13 @@ const FlappyBird: React.FC<FlappyBirdProps> = ({ onBack }) => {
         state.pipes.push({ x: CANVAS_WIDTH, topH, scored: false });
       }
 
-      // Speed increase — only after 5 points, very gradual
-      if (state.score >= 5) {
-        state.speed = PIPE_SPEED_INITIAL + (state.score - 5) * 0.03;
+      // Speed increase — after 3 points, moderate
+      if (state.score >= 3) {
+        state.speed = PIPE_SPEED_INITIAL + (state.score - 3) * 0.045;
       }
 
-      // Update gap — very gradual reduction, never below PIPE_GAP_MIN
-      const currentGap = Math.max(PIPE_GAP_MIN, PIPE_GAP - Math.floor(state.score / 8) * 3);
+      // Update gap — moderate reduction, never below PIPE_GAP_MIN
+      const currentGap = Math.max(PIPE_GAP_MIN, PIPE_GAP - Math.floor(state.score / 5) * 4);
 
       // Move pipes & check collision
       state.pipes = state.pipes.filter(pipe => {

@@ -12,9 +12,9 @@ const GRID_W = 22;
 const GRID_H = 22;
 const CANVAS_WIDTH = GRID_W * CELL_SIZE;
 const CANVAS_HEIGHT = GRID_H * CELL_SIZE;
-const BASE_TICK_MS = 130; // ~7.7 ticks/sec
-const MIN_TICK_MS = 72;   // ~14 ticks/sec cap
-const SPEED_STEP = 5;     // every 5 points, speed up
+const BASE_TICK_MS = 115; // ~8.7 ticks/sec
+const MIN_TICK_MS = 62;   // ~16 ticks/sec cap
+const SPEED_STEP = 4;     // every 4 points, speed up
 
 type Dir = 'up' | 'down' | 'left' | 'right';
 type Pos = { x: number; y: number };
