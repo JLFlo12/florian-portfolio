@@ -1087,6 +1087,49 @@ export const projectGalleries: ProjectGallery[] = [
           '✅ Marquer le joueur avec un boss mémorable',
           '✅ Démontrer le potentiel du projet et de l\'équipe'
         ]
+      },
+      {
+        section: '🛠️ Outils et ressources',
+        content: [
+          '⚙️ Moteur : Unreal Engine 5.3+',
+          '📋 Gestion de projet : Notion / Trello',
+          '🔄 Versioning : GitHub ou Perforce',
+          '🎨 Assets : Unreal Marketplace, Quixel Megascans, Mixamo (animations)',
+          '🎵 Audio : Freesound.org, compositions custom pour le boss',
+          '📝 Documentation : Notion (GDD, combat doc, blueprint architecture)',
+          '🧪 Tests : Builds mensuels, playtests externes dès la phase 5'
+        ]
+      },
+      {
+        section: '📊 Rétroplanning synthétique',
+        content: [
+          '📅 Semaine 1-2 : Pré-production — Scope verrouillé, combat doc finalisé, répartition des rôles',
+          '📅 Semaine 3-4 : Prototype jouable — Contrôles joueur, caméra, roulade, garde',
+          '📅 Semaine 5-6 : Système de stamina — Consommation, blocage, feedback visuel, tests',
+          '📅 Semaine 7-8 : Combat basique — Attaques légères/lourdes, hitbox, dégâts, game feel',
+          '📅 Semaine 9-10 : Ennemis & Boss — IA standard, prototype boss, patterns grossiers',
+          '📅 Semaine 11-12 : Level Design — Greybox forêt, placement ennemis, checkpoint',
+          '📅 Semaine 13-14 : Polishing — Feedback joueur, sons d\'impact, équilibrage boss, UX',
+          '📅 Semaine 15-16 : Finalisation — Tests externes, ajustements, menu, build final'
+        ]
+      },
+      {
+        section: '⚠️ Risques et contraintes',
+        content: [
+          '🔴 Équilibrage du boss (Impact élevé) → Solution : Playtests externes réguliers, observer sans expliquer',
+          '🟠 Performance Unreal (Impact moyen) → Solution : Optimiser tôt, LOD et occlusion dès le greybox',
+          '🟠 Animations de combat (Impact moyen) → Solution : Mixamo + retouches manuelles',
+          '🔴 Coordination équipe réduite (Impact élevé) → Solution : Rôles clairs, builds hebdomadaires, communication constante'
+        ]
+      },
+      {
+        section: '🎯 Livrable final attendu',
+        content: [
+          '✅ Démo jouable et complète sur PC',
+          '⏱️ Durée de jeu estimée : ~20 minutes',
+          '⚔️ Combat Souls-like solide avec boss mémorable',
+          '💻 Build final compilé et testé sous Windows (clavier/manette)'
+        ]
       }
     ]
   },
