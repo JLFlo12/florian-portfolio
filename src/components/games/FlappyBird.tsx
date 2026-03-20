@@ -11,13 +11,13 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 600;
 const BIRD_SIZE = 24;
 const BIRD_X = 80;
-const GRAVITY = 0.38;
-const FLAP_FORCE = -6.2;
+const GRAVITY = 0.40;
+const FLAP_FORCE = -6.3;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 168;
-const PIPE_GAP_MIN = 130;
-const PIPE_SPEED_INITIAL = 2.9;
-const PIPE_SPAWN_INTERVAL = 90; // frames
+const PIPE_GAP = 160;
+const PIPE_GAP_MIN = 125;
+const PIPE_SPEED_INITIAL = 3.0;
+const PIPE_SPAWN_INTERVAL = 85; // frames
 const HITBOX_SHRINK = 4; // pixels to shrink bird hitbox
 
 const FlappyBird: React.FC<FlappyBirdProps> = ({ onBack }) => {
