@@ -11,12 +11,12 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 600;
 const BIRD_SIZE = 24;
 const BIRD_X = 80;
-const GRAVITY = 0.48;
-const FLAP_FORCE = -6.6;
+const GRAVITY = 0.52;
+const FLAP_FORCE = -6.8;
 const PIPE_WIDTH = 50;
 const PIPE_GAP = 150;
 const PIPE_GAP_MIN = 120;
-const PIPE_SPEED_INITIAL = 3.6;
+const PIPE_SPEED_INITIAL = 4.5;
 const PIPE_SPAWN_INTERVAL = 80; // frames
 const HITBOX_SHRINK = 4; // pixels to shrink bird hitbox
 
