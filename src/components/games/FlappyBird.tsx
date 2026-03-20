@@ -16,7 +16,7 @@ const FLAP_FORCE = -6.6;
 const PIPE_WIDTH = 50;
 const PIPE_GAP = 150;
 const PIPE_GAP_MIN = 120;
-const PIPE_SPEED_INITIAL = 3.3;
+const PIPE_SPEED_INITIAL = 3.6;
 const PIPE_SPAWN_INTERVAL = 80; // frames
 const HITBOX_SHRINK = 4; // pixels to shrink bird hitbox
 
