@@ -1198,6 +1198,72 @@ export const projectGalleries: ProjectGallery[] = [
         description: 'Architecture des données'
       }
     ]
+  },
+  {
+    projectId: 'des-jeux-pour-professionnels-du-btiment',
+    projectTitle: 'Des Jeux pour Professionnels du Bâtiment',
+    images: [
+      {
+        id: '1',
+        url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
+        title: 'Chantier BTP',
+        description: 'Contexte professionnel du bâtiment'
+      },
+      {
+        id: '2',
+        url: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop',
+        title: 'Gamification',
+        description: 'Approche ludique pour les professionnels'
+      }
+    ],
+    details: [
+      {
+        section: '📋 Informations générales',
+        content: [
+          '🎮 Titre : "Des jeux pour professionnels du bâtiment"',
+          '👥 Équipe : Florian Girardot Lahogue · Mathis Payet · Romaric Gambier',
+          '🎯 Type : Application web/mobile',
+          '🏗️ Secteur : BTP / construction',
+          '🎯 Cible : Professionnels du bâtiment connectés et exigeants (30–35 ans)'
+        ]
+      },
+      {
+        section: '📖 Concept du projet',
+        content: [
+          '📱 Application web/mobile conçue pour intégrer une dimension ludique dans le quotidien des professionnels du bâtiment, sans jamais compromettre leur productivité.',
+          '🎯 Le projet répond à un défi précis : offrir une vraie pause à des travailleurs de terrain, connectés et exigeants, qui n\'ont que 1 à 2 minutes disponibles et attendent de la valeur ajoutée — pas du divertissement vide.',
+          '⏱️ Les sessions durent moins de 2 minutes, sans boucle addictive ni récompenses infinies.',
+          '🔄 Un système de rotation mensuelle renouvelle le jeu actif pour maintenir l\'intérêt dans la durée.'
+        ]
+      },
+      {
+        section: '🎮 Mini-jeux développés',
+        content: [
+          '🏛️ Guess the Building — Quiz visuel pour identifier des bâtiments iconiques à travers le monde',
+          '🏗️ Bati-Bloc — Jeu de grue où l\'on empile des blocs de chantier le plus haut possible',
+          '⏱️ Format court : chaque session dure moins de 2 minutes',
+          '🚫 Aucune boucle addictive, aucune récompense infinie'
+        ]
+      },
+      {
+        section: '🎯 Philosophie de conception',
+        content: [
+          '✅ Chaque choix de conception — format court, contenu métier, zéro distraction excessive — vise le même équilibre :',
+          '🤝 Humaniser l\'expérience utilisateur tout en respectant l\'identité professionnelle du secteur BTP',
+          '🧠 Gameplay facile à comprendre en 3 secondes',
+          '💼 Adapté à un environnement professionnel de chantier'
+        ]
+      },
+      {
+        section: '🛠️ Technologies et compétences',
+        content: [
+          '🎨 UX Design — Conception centrée utilisateur pour un public terrain',
+          '🎮 Gamification — Mécaniques de jeu appliquées au contexte professionnel',
+          '💻 Application web — Développement front-end responsive',
+          '📊 Game Design — Équilibrage des sessions courtes et engageantes'
+        ]
+      }
+    ]
   }
 ];
 
