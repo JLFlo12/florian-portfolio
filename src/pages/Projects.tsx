@@ -131,6 +131,17 @@ const Projects = () => {
       technologies: ['React', 'TypeScript', 'Base de données'],
       canvaLink: 'https://www.canva.com/design/DAGjpZz6DBo/KOSw2rqbdxCLlwOk5y6p8Q/edit',
       thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&h=600&fit=crop'
+    },
+    {
+      title: 'Des Jeux pour Professionnels du Bâtiment',
+      description: {
+        fr: 'Conception de mini-jeux éducatifs et ludiques destinés aux professionnels du BTP — gamification au service de la formation et de la prévention sur chantier',
+        en: 'Educational mini-games designed for construction professionals — gamification for training and on-site safety awareness'
+      },
+      status: 'completed',
+      technologies: ['Gamification', 'BTP', 'WebApp', 'Game Design'],
+      canvaLink: 'https://gamma.app/docs/Des-Jeux-pour-Professionnels-du-Batiment-h5a4244sqx07syb',
+      thumbnail: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&h=600&fit=crop'
     }
   ];
 
