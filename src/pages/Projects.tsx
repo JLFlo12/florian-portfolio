@@ -15,7 +15,7 @@ const Projects = () => {
     {
       title: 'The Forgotten - Survival Horror',
       description: {
-        fr: 'Développement d\'un jeu survival horror en Unreal Engine 5 - Exploration, survie et ambiance oppressante dans une forêt brumeuse',
+        fr: 'Développement d\'un jeu survival horror en Unreal Engine 5 - exploration, survie et ambiance oppressante dans une forêt brumeuse',
         en: 'Survival horror game development in Unreal Engine 5 - Exploration, survival and oppressive atmosphere in a foggy forest'
       },
       status: 'inProgress',
@@ -25,7 +25,7 @@ const Projects = () => {
     {
       title: 'If You Stay — Science-fiction émotionnelle',
       description: {
-        fr: 'Jeu narratif 2.5D développé avec Godot — Science-fiction émotionnelle avec choix quantiques, deux fins et gameplay contemplatif',
+        fr: 'Jeu narratif 2.5D développé avec Godot — science-fiction émotionnelle avec choix quantiques, deux fins et gameplay contemplatif',
         en: '2.5D narrative game built with Godot — Emotional sci-fi with quantum choices, two endings and contemplative gameplay'
       },
       status: 'inProgress',
@@ -35,7 +35,7 @@ const Projects = () => {
     {
       title: 'Thornfall — Action RPG Souls-like',
       description: {
-        fr: 'Démo Souls-like en Unreal Engine — Combat lourd et punitif, boss mémorable, forêt sinistre en dark fantasy',
+        fr: 'Démo Souls-like en Unreal Engine — combat lourd et punitif, boss mémorable, forêt sinistre en dark fantasy',
         en: 'Souls-like demo in Unreal Engine — Heavy punishing combat, memorable boss, dark fantasy sinister forest'
       },
       status: 'inProgress',

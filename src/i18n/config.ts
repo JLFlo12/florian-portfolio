@@ -26,13 +26,13 @@ const resources = {
         bio: 'Étudiant passionné par l\'informatique, le développement et la cyber.',
         location: 'La Réunion, France',
         cta: 'Découvrir mes projets',
-        skillsTitle: 'Compétences Techniques',
+        skillsTitle: 'Compétences techniques',
         softSkillsTitle: 'Soft Skills',
         toolsTitle: 'Outils que j\'utilise'
       },
       // Projects page
       projects: {
-        title: 'Mes Projets',
+        title: 'Mes projets',
         completed: 'Terminés',
         inProgress: 'En cours',
         viewProject: 'Voir le projet',
@@ -63,7 +63,7 @@ const resources = {
       },
       // About page
       about: {
-        title: 'À Propos',
+        title: 'À propos',
         intro: 'Étudiant passionné par les technologies réseau et la cybersécurité',
         cvTitle: 'Mon CV',
         downloadCV: 'Télécharger mon CV',
