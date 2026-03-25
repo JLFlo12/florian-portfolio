@@ -50,7 +50,7 @@ const resources = {
         },
         // Descriptions de projets traduites
         projectDescriptions: {
-          'the-forgotten-survival-horror': 'Développement d\'un jeu survival horror en Unreal Engine 5 - Exploration, survie et ambiance oppressante dans une forêt brumeuse',
+          'the-forgotten-survival-horror': 'Développement d\'un jeu survival horror en Unreal Engine 5 - exploration, survie et ambiance oppressante dans une forêt brumeuse',
           'hygiene-cybersecurite': 'Apprentissage des bonnes pratiques de sécurité (mots de passe, antivirus, pare-feu, etc.)',
           'pilotage-led-raspberry': 'Contrôle de LED à distance via un serveur web sur Raspberry Pi',
           'analyse-transmission-wifi': 'Étude de la puissance des signaux WiFi avec WiFi Analyzer et documentation des résultats',
