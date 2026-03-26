@@ -110,7 +110,73 @@ const ProjectGallery = () => {
     </motion.div>
   );
 
-  if (!gallery) {
+  // Dynamic project view
+  if (isDynamic && dynamicProject) {
+    const details = dynamicProject.detailed_content || [];
+    return (
+      <div className="min-h-screen px-6 py-20 bg-background">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-12">
+            <Link to="/projects" className="inline-block mb-6">
+              <Button variant="outline" className="bg-background hover:bg-accent text-foreground border-border">
+                <ArrowLeft className="h-4 w-4 mr-2" />Retour aux projets
+              </Button>
+            </Link>
+            <h1 className="text-4xl lg:text-6xl font-black mb-4 text-foreground">{dynamicProject.title}</h1>
+            <div className="w-24 h-1 bg-primary mb-6"></div>
+            <p className="text-lg text-muted-foreground mb-6">
+              {t('lng') === 'en' ? dynamicProject.description_en : dynamicProject.description_fr}
+            </p>
+            {dynamicProject.slideshow_url && (
+              <div className="mb-8">
+                <a href={dynamicProject.slideshow_url} target="_blank" rel="noopener noreferrer" className="inline-block">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <ExternalLink className="h-4 w-4 mr-2" />Voir la présentation
+                  </Button>
+                </a>
+                <div className="mt-6">
+                  <iframe
+                    src={dynamicProject.slideshow_url.includes('/edit') ? dynamicProject.slideshow_url.replace('/edit', '/view?embed') : dynamicProject.slideshow_url + '?embed'}
+                    className="w-full h-96 border border-border rounded-lg"
+                    title={dynamicProject.title}
+                  />
+                </div>
+              </div>
+            )}
+          </motion.div>
+          {details.length > 0 && (
+            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+              <h2 className="text-3xl font-bold mb-8 text-foreground">Détails du projet</h2>
+              <div className="space-y-6">
+                {details.map((detail: any, index: number) => (
+                  <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
+                    <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+                      <CardContent className="p-6">
+                        <h3 className="text-xl font-bold mb-4 text-primary">{detail.section}</h3>
+                        <ul className="space-y-2">
+                          {detail.content.map((item: string, i: number) => (
+                            <li key={i} className="text-muted-foreground leading-relaxed">{item}</li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+          {dynamicProject.thumbnail_url && (
+            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-12">
+              <h2 className="text-3xl font-bold mb-8 text-foreground">Image du projet</h2>
+              <img src={dynamicProject.thumbnail_url} alt={dynamicProject.title} className="w-full max-w-2xl rounded-lg border border-border" />
+            </motion.div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (!gallery && !dynamicProject) {
     return (
       <div className="min-h-screen px-6 py-20 bg-background">
         <div className="max-w-4xl mx-auto text-center">
@@ -127,6 +193,8 @@ const ProjectGallery = () => {
       </div>
     );
   }
+
+  if (!gallery) return null;
 
   return (
     <div className="min-h-screen px-6 py-20 bg-background">
