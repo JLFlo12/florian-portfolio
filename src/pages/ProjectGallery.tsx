@@ -25,8 +25,25 @@ const ProjectGallery = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const { t } = useTranslation();
   
-  const gallery = projectId ? getProjectGallery(projectId) : undefined;
-  const canvaLink = projectId ? canvaLinks[projectId] : undefined;
+  const isDynamic = projectId?.startsWith('dynamic-');
+  const dynamicId = isDynamic ? projectId.replace('dynamic-', '') : null;
+  
+  const { data: dynamicProject } = useQuery({
+    queryKey: ['dynamic-project', dynamicId],
+    enabled: !!dynamicId,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('projects' as any)
+        .select('*')
+        .eq('id', dynamicId!)
+        .single();
+      if (error) throw error;
+      return data as any;
+    },
+  });
+  
+  const gallery = !isDynamic && projectId ? getProjectGallery(projectId) : undefined;
+  const canvaLink = !isDynamic && projectId ? canvaLinks[projectId] : undefined;
 
   // Fonction pour obtenir l'icône selon le type de fichier
   const getFileIcon = (type: string) => {
