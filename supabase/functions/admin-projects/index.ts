@@ -47,18 +47,17 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (req.method === "POST" && action === "create") {
-      const body = await req.json();
-      const { data, error } = await supabase.from("projects").insert(body).select().single();
+    if (action === "create") {
+      const { action: _, ...projectData } = body;
+      const { data, error } = await supabase.from("projects").insert(projectData).select().single();
       if (error) throw error;
       return new Response(JSON.stringify(data), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    if (req.method === "PUT" && action === "update") {
-      const body = await req.json();
-      const { id, ...updates } = body;
+    if (action === "update") {
+      const { action: _, id, ...updates } = body;
       const { data, error } = await supabase.from("projects").update(updates).eq("id", id).select().single();
       if (error) throw error;
       return new Response(JSON.stringify(data), {
@@ -66,9 +65,8 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (req.method === "DELETE" && action === "delete") {
-      const { id } = await req.json();
-      const { error } = await supabase.from("projects").delete().eq("id", id);
+    if (action === "delete") {
+      const { error } = await supabase.from("projects").delete().eq("id", body.id);
       if (error) throw error;
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
