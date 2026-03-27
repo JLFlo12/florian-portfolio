@@ -34,9 +34,9 @@ export const useCreateProject = (adminPassword: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (project: Partial<DynamicProject>) => {
-      const { data, error } = await supabase.functions.invoke('admin-projects?action=create', {
+      const { data, error } = await supabase.functions.invoke('admin-projects', {
         headers: { 'x-admin-password': adminPassword },
-        body: project,
+        body: { action: 'create', ...project },
       });
       if (error) throw error;
       return data;
