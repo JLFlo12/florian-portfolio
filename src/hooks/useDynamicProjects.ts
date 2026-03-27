@@ -64,10 +64,9 @@ export const useDeleteProject = (adminPassword: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (id: string) => {
-      const { data, error } = await supabase.functions.invoke('admin-projects?action=delete', {
-        method: 'DELETE',
+      const { data, error } = await supabase.functions.invoke('admin-projects', {
         headers: { 'x-admin-password': adminPassword },
-        body: { id },
+        body: { action: 'delete', id },
       });
       if (error) throw error;
       return data;
