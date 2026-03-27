@@ -27,10 +27,21 @@ Deno.serve(async (req) => {
   );
 
   const url = new URL(req.url);
-  const action = url.searchParams.get("action");
+  let action = url.searchParams.get("action");
+
+  // Also support action from body for supabase.functions.invoke compatibility
+  let body: any = {};
+  try {
+    body = await req.json();
+    if (!action && body?.action) {
+      action = body.action;
+    }
+  } catch {
+    // No body or invalid JSON
+  }
 
   try {
-    if (req.method === "POST" && action === "verify") {
+    if (action === "verify") {
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
