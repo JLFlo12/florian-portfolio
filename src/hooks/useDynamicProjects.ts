@@ -49,10 +49,9 @@ export const useUpdateProject = (adminPassword: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (project: Partial<DynamicProject> & { id: string }) => {
-      const { data, error } = await supabase.functions.invoke('admin-projects?action=update', {
-        method: 'PUT',
+      const { data, error } = await supabase.functions.invoke('admin-projects', {
         headers: { 'x-admin-password': adminPassword },
-        body: project,
+        body: { action: 'update', ...project },
       });
       if (error) throw error;
       return data;
