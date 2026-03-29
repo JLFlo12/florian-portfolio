@@ -21,6 +21,7 @@ export type Database = {
           description_fr: string
           detailed_content: Json | null
           display_order: number
+          gallery_images: Json
           id: string
           slideshow_type: string | null
           slideshow_url: string | null
@@ -35,6 +36,7 @@ export type Database = {
           description_fr?: string
           detailed_content?: Json | null
           display_order?: number
+          gallery_images?: Json
           id?: string
           slideshow_type?: string | null
           slideshow_url?: string | null
@@ -49,6 +51,7 @@ export type Database = {
           description_fr?: string
           detailed_content?: Json | null
           display_order?: number
+          gallery_images?: Json
           id?: string
           slideshow_type?: string | null
           slideshow_url?: string | null
