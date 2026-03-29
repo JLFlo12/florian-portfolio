@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette, ImageIcon, Pencil } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette, ImageIcon, Pencil, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
