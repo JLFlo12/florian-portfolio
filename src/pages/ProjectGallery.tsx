@@ -1,14 +1,19 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette, ImageIcon } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, FileText, Code, Palette, ImageIcon, Pencil } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
 import { getProjectGallery, ProjectFile } from '@/data/projectGalleries';
 import { supabase } from '@/integrations/supabase/client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
+import { useUpdateProject, GalleryImage } from '@/hooks/useDynamicProjects';
+import GalleryEditor from '@/components/admin/GalleryEditor';
+import AdminLoginDialog from '@/components/admin/AdminLoginDialog';
+import { Lock, LogOut } from 'lucide-react';
 
 // Liens Canva pour chaque projet
 const canvaLinks: { [key: string]: string } = {
@@ -24,6 +29,11 @@ const canvaLinks: { [key: string]: string } = {
 const ProjectGallery = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const { t } = useTranslation();
+  const { isAdmin, adminPassword, login, logout } = useAdminAuth();
+  const updateProject = useUpdateProject(adminPassword);
+  const queryClient = useQueryClient();
+  const [editing, setEditing] = useState(false);
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
   
   const isDynamic = projectId?.startsWith('dynamic-');
   const dynamicId = isDynamic ? projectId.replace('dynamic-', '') : null;
@@ -45,62 +55,39 @@ const ProjectGallery = () => {
   const gallery = !isDynamic && projectId ? getProjectGallery(projectId) : undefined;
   const canvaLink = !isDynamic && projectId ? canvaLinks[projectId] : undefined;
 
+  const handleSaveGallery = async (data: { detailed_content: any[]; gallery_images: GalleryImage[] }) => {
+    await updateProject.mutateAsync({ id: dynamicId!, ...data } as any);
+    queryClient.invalidateQueries({ queryKey: ['dynamic-project', dynamicId] });
+    setEditing(false);
+  };
+
   // Fonction pour obtenir l'icône selon le type de fichier
   const getFileIcon = (type: string) => {
     switch (type) {
-      case 'html':
-        return <FileText className="h-5 w-5" />;
-      case 'css':
-        return <Palette className="h-5 w-5" />;
-      case 'js':
-        return <Code className="h-5 w-5" />;
-      default:
-        return <FileText className="h-5 w-5" />;
+      case 'html': return <FileText className="h-5 w-5" />;
+      case 'css': return <Palette className="h-5 w-5" />;
+      case 'js': return <Code className="h-5 w-5" />;
+      default: return <FileText className="h-5 w-5" />;
     }
   };
 
-  // Composant pour afficher un fichier
   const FileCard = ({ file, index }: { file: ProjectFile; index: number }) => (
-    <motion.div
-      key={file.id}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      className="group cursor-pointer"
-    >
+    <motion.div key={file.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ scale: 1.02, y: -5 }} className="group cursor-pointer">
       <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center space-x-3">
-              <div className="text-primary">
-                {getFileIcon(file.type)}
-              </div>
+              <div className="text-primary">{getFileIcon(file.type)}</div>
               <div>
-                <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors">
-                  {file.title}
-                </h3>
-                {file.description && (
-                  <p className="text-muted-foreground text-sm mt-1">
-                    {file.description}
-                  </p>
-                )}
+                <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors">{file.title}</h3>
+                {file.description && <p className="text-muted-foreground text-sm mt-1">{file.description}</p>}
               </div>
             </div>
             <div className="flex space-x-2">
-              <a 
-                href={file.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
-              >
+              <a href={file.url} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors">
                 <ExternalLink className="h-4 w-4" />
               </a>
-              <a 
-                href={file.url} 
-                download
-                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
-              >
+              <a href={file.url} download className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors">
                 <Download className="h-4 w-4" />
               </a>
             </div>
@@ -113,15 +100,41 @@ const ProjectGallery = () => {
   // Dynamic project view
   if (isDynamic && dynamicProject) {
     const details = dynamicProject.detailed_content || [];
+    const galleryImages: GalleryImage[] = dynamicProject.gallery_images || [];
+
     return (
       <div className="min-h-screen px-6 py-20 bg-background">
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-12">
-            <Link to="/projects" className="inline-block mb-6">
-              <Button variant="outline" className="bg-background hover:bg-accent text-foreground border-border">
-                <ArrowLeft className="h-4 w-4 mr-2" />Retour aux projets
-              </Button>
-            </Link>
+            <div className="flex items-center justify-between mb-6">
+              <Link to="/projects">
+                <Button variant="outline" className="bg-background hover:bg-accent text-foreground border-border">
+                  <ArrowLeft className="h-4 w-4 mr-2" />Retour aux projets
+                </Button>
+              </Link>
+              <div className="flex gap-2">
+                {!isAdmin ? (
+                  <Button variant="outline" size="sm" onClick={() => setShowLoginDialog(true)} className="gap-2">
+                    <Lock className="h-4 w-4" /> Admin
+                  </Button>
+                ) : (
+                  <>
+                    <Button
+                      size="sm"
+                      variant={editing ? "destructive" : "default"}
+                      onClick={() => setEditing(!editing)}
+                      className="gap-2"
+                    >
+                      {editing ? <><X className="h-4 w-4" /> Annuler</> : <><Pencil className="h-4 w-4" /> Modifier le contenu</>}
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={logout} className="gap-2">
+                      <LogOut className="h-4 w-4" /> Déco
+                    </Button>
+                  </>
+                )}
+              </div>
+            </div>
+
             <h1 className="text-4xl lg:text-6xl font-black mb-4 text-foreground">{dynamicProject.title}</h1>
             <div className="w-24 h-1 bg-primary mb-6"></div>
             <p className="text-lg text-muted-foreground mb-6">
@@ -144,34 +157,78 @@ const ProjectGallery = () => {
               </div>
             )}
           </motion.div>
-          {details.length > 0 && (
-            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Détails du projet</h2>
-              <div className="space-y-6">
-                {details.map((detail: any, index: number) => (
-                  <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
-                    <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-bold mb-4 text-primary">{detail.section}</h3>
-                        <ul className="space-y-2">
-                          {detail.content.map((item: string, i: number) => (
-                            <li key={i} className="text-muted-foreground leading-relaxed">{item}</li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+
+          {/* Edit mode */}
+          {editing && isAdmin && (
+            <GalleryEditor
+              projectId={dynamicId!}
+              detailedContent={details}
+              galleryImages={galleryImages}
+              onSave={handleSaveGallery}
+            />
           )}
-          {dynamicProject.thumbnail_url && (
-            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-12">
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Image du projet</h2>
-              <img src={dynamicProject.thumbnail_url} alt={dynamicProject.title} className="w-full max-w-2xl rounded-lg border border-border" />
-            </motion.div>
+
+          {/* Read mode */}
+          {!editing && (
+            <>
+              {details.length > 0 && (
+                <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+                  <h2 className="text-3xl font-bold mb-8 text-foreground">Détails du projet</h2>
+                  <div className="space-y-6">
+                    {details.map((detail: any, index: number) => (
+                      <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
+                        <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+                          <CardContent className="p-6">
+                            <h3 className="text-xl font-bold mb-4 text-primary">{detail.section}</h3>
+                            <ul className="space-y-2">
+                              {detail.content.map((item: string, i: number) => (
+                                <li key={i} className="text-muted-foreground leading-relaxed">{item}</li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Gallery images */}
+              {galleryImages.length > 0 && (
+                <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-12">
+                  <h2 className="text-3xl font-bold mb-8 text-foreground">Images du projet</h2>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {galleryImages.map((image, index) => (
+                      <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ scale: 1.02, y: -5 }} className="group">
+                        <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                          <CardContent className="p-0">
+                            <div className="relative overflow-hidden">
+                              <img src={image.url} alt={image.title} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+                            </div>
+                            <div className="p-6">
+                              <h3 className="text-xl font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors">{image.title}</h3>
+                              {image.description && <p className="text-muted-foreground text-sm leading-relaxed">{image.description}</p>}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Thumbnail fallback */}
+              {galleryImages.length === 0 && dynamicProject.thumbnail_url && (
+                <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-12">
+                  <h2 className="text-3xl font-bold mb-8 text-foreground">Image du projet</h2>
+                  <img src={dynamicProject.thumbnail_url} alt={dynamicProject.title} className="w-full max-w-2xl rounded-lg border border-border" />
+                </motion.div>
+              )}
+            </>
           )}
         </div>
+
+        <AdminLoginDialog open={showLoginDialog} onOpenChange={setShowLoginDialog} onLogin={login} />
       </div>
     );
   }
@@ -180,13 +237,10 @@ const ProjectGallery = () => {
     return (
       <div className="min-h-screen px-6 py-20 bg-background">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-8 text-foreground">
-            Projet non trouvé
-          </h1>
+          <h1 className="text-4xl font-bold mb-8 text-foreground">Projet non trouvé</h1>
           <Link to="/projects">
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour aux projets
+              <ArrowLeft className="h-4 w-4 mr-2" />Retour aux projets
             </Button>
           </Link>
         </div>
@@ -199,84 +253,40 @@ const ProjectGallery = () => {
   return (
     <div className="min-h-screen px-6 py-20 bg-background">
       <div className="max-w-6xl mx-auto">
-        {/* Header avec bouton retour */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
+        <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-12">
           <Link to="/projects" className="inline-block mb-6">
-            <Button 
-              variant="outline" 
-              className="bg-background hover:bg-accent text-foreground border-border"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour aux projets
+            <Button variant="outline" className="bg-background hover:bg-accent text-foreground border-border">
+              <ArrowLeft className="h-4 w-4 mr-2" />Retour aux projets
             </Button>
           </Link>
-          
-          <h1 className="text-4xl lg:text-6xl font-black mb-4 text-foreground">
-            {gallery.projectTitle}
-          </h1>
+          <h1 className="text-4xl lg:text-6xl font-black mb-4 text-foreground">{gallery.projectTitle}</h1>
           <div className="w-24 h-1 bg-primary mb-6"></div>
-          
-          {/* Lien Canva si disponible */}
           {canvaLink && (
             <div className="mb-8">
-              <a 
-                href={canvaLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block"
-              >
+              <a href={canvaLink} target="_blank" rel="noopener noreferrer" className="inline-block">
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  Voir sur Canva
+                  <ExternalLink className="h-4 w-4 mr-2" />Voir sur Canva
                 </Button>
               </a>
-              
-              {/* Intégration Canva optionnelle */}
               <div className="mt-6">
-                <iframe
-                  src={canvaLink.replace('/edit', '/view').replace('/view', '/view?embed')}
-                  className="w-full h-96 border border-border rounded-lg"
-                  title={gallery.projectTitle}
-                />
+                <iframe src={canvaLink.replace('/edit', '/view').replace('/view', '/view?embed')} className="w-full h-96 border border-border rounded-lg" title={gallery.projectTitle} />
               </div>
             </div>
           )}
         </motion.div>
 
-        {/* Section des détails du projet si disponibles */}
         {gallery.details && gallery.details.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-8 text-foreground">
-              Plan d'action du projet
-            </h2>
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="mb-12">
+            <h2 className="text-3xl font-bold mb-8 text-foreground">Plan d'action du projet</h2>
             <div className="space-y-6">
               {gallery.details.map((detail, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
+                <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
                   <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
                     <CardContent className="p-6">
-                      <h3 className="text-xl font-bold mb-4 text-primary">
-                        {detail.section}
-                      </h3>
+                      <h3 className="text-xl font-bold mb-4 text-primary">{detail.section}</h3>
                       <ul className="space-y-2">
                         {detail.content.map((item, itemIndex) => (
-                          <li key={itemIndex} className="text-muted-foreground leading-relaxed">
-                            {item}
-                          </li>
+                          <li key={itemIndex} className="text-muted-foreground leading-relaxed">{item}</li>
                         ))}
                       </ul>
                     </CardContent>
@@ -287,17 +297,9 @@ const ProjectGallery = () => {
           </motion.div>
         )}
 
-        {/* Section des fichiers si disponibles */}
         {gallery.files && gallery.files.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-8 text-foreground">
-              Fichiers du projet
-            </h2>
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mb-12">
+            <h2 className="text-3xl font-bold mb-8 text-foreground">Fichiers du projet</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {gallery.files.map((file, index) => (
                 <FileCard key={file.id} file={file} index={index} />
@@ -306,76 +308,42 @@ const ProjectGallery = () => {
           </motion.div>
         )}
 
-        {/* Galerie de photos */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className="text-3xl font-bold mb-8 text-foreground">
-            Images du projet
-          </h2>
+        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="mb-12">
+          <h2 className="text-3xl font-bold mb-8 text-foreground">Images du projet</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gallery.images.map((image, index) => (
-            <motion.div
-              key={image.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="group cursor-pointer"
-            >
-              <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="relative overflow-hidden">
-                    {image.url ? (
-                      <img
-                        src={image.url}
-                        alt={image.title}
-                        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    ) : (
-                      <div className="w-full h-64 bg-muted/50 flex flex-col items-center justify-center gap-2 border-b border-border">
-                        <ImageIcon className="h-12 w-12 text-muted-foreground/40" />
-                        <span className="text-sm text-muted-foreground/60">Image à venir</span>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute top-4 right-4">
-                        <ExternalLink className="h-5 w-5 text-white" />
+            {gallery.images.map((image, index) => (
+              <motion.div key={image.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ scale: 1.02, y: -5 }} className="group cursor-pointer">
+                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="relative overflow-hidden">
+                      {image.url ? (
+                        <img src={image.url} alt={image.title} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+                      ) : (
+                        <div className="w-full h-64 bg-muted/50 flex flex-col items-center justify-center gap-2 border-b border-border">
+                          <ImageIcon className="h-12 w-12 text-muted-foreground/40" />
+                          <span className="text-sm text-muted-foreground/60">Image à venir</span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute top-4 right-4">
+                          <ExternalLink className="h-5 w-5 text-white" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors">
-                      {image.title}
-                    </h3>
-                    {image.description && (
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {image.description}
-                      </p>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors">{image.title}</h3>
+                      {image.description && <p className="text-muted-foreground text-sm leading-relaxed">{image.description}</p>}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Message si pas d'images */}
         {gallery.images.length === 0 && (!gallery.files || gallery.files.length === 0) && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center py-16"
-          >
-            <p className="text-muted-foreground text-lg">
-              Aucun contenu disponible pour ce projet.
-            </p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-center py-16">
+            <p className="text-muted-foreground text-lg">Aucun contenu disponible pour ce projet.</p>
           </motion.div>
         )}
       </div>
