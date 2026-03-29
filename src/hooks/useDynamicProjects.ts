@@ -1,6 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 
+export interface GalleryImage {
+  url: string;
+  title: string;
+  description?: string;
+}
+
 export interface DynamicProject {
   id: string;
   title: string;
@@ -12,6 +18,7 @@ export interface DynamicProject {
   slideshow_type: string;
   status: string;
   detailed_content: any[];
+  gallery_images: GalleryImage[];
   display_order: number;
   created_at: string;
 }
