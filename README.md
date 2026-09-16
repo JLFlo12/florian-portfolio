@@ -1,68 +1,154 @@
-# Welcome to your Lovable project
+<div align="center">
 
+# Florian G.L · Portfolio
 
-## How can I edit this code?
+**My personal portfolio: projects, skills, AI assistant and mini-games**
 
-There are several ways of editing your application.
+🇬🇧 English · [🇫🇷 Français](README.fr.md)
 
+[![Live site](https://img.shields.io/badge/Live%20site-florian--portfolio--zeta.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://florian-portfolio-zeta.vercel.app/)
 
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Changes made via Lovable will be committed automatically to this repo.
+</div>
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## About
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+This is the source code of my portfolio. I'm a student in the BUT Réseaux & Télécommunications (Networks & Telecoms) programme, cybersecurity track, in Réunion. The site presents my projects, skills and CV, and it also includes an AI assistant and a few mini-games.
 
-Follow these steps:
+## Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- 🏠 **Home**: introduction, technical skills and soft skills, and the tools I use (Kali Linux, Wireshark, GNS3, pfSense, Unreal Engine…)
+- 📁 **Projects**: projects grouped into *In progress* and *Completed*, with a detail page for each (description, image gallery, Canva slideshow)
+- 👤 **About**: education, areas of expertise (networks, systems, cybersecurity) and a CV you can view online or download as a PDF
+- ✉️ **Contact**: email, GitHub and LinkedIn
+- 🤖 **Jarvis**: an AI assistant that answers questions about my profile, skills and projects, as well as general questions, with streamed replies formatted in Markdown
+- 🎮 **Games**: Dino Runner, Flappy Bird, Snake, Guess the Building and Tower Crane Challenge
+- 🌗 **Dark and light theme**, remembered by the browser
+- 🌍 **French and English** (i18next)
+- 🔐 **Admin mode**: a password-protected screen to add, edit and delete projects and manage their galleries, directly from the site
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Tech stack
 
-# Step 3: Install the necessary dependencies.
-npm i
+| Area | Technology |
+| --- | --- |
+| Framework | React 18 + TypeScript |
+| Build tool | Vite 5 (SWC) |
+| UI | Tailwind CSS, shadcn/ui (Radix UI), Framer Motion, lucide-react |
+| Routing | React Router 6 |
+| Translations | i18next / react-i18next |
+| Data | Supabase (PostgreSQL, Storage, Edge Functions) + TanStack React Query |
+| AI chatbot | Supabase Edge Function → Lovable AI Gateway (streaming) |
+| Hosting | Vercel |
+| Scaffolding | [Lovable](https://lovable.dev) |
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## How it works
+
+```mermaid
+flowchart LR
+    V[Visitor] --> S[React site on Vercel]
+    S -->|reads projects| DB[(Supabase: projects table)]
+    S -->|chat messages| F1[Edge Function: cyberbot-chat]
+    F1 --> AI[Lovable AI Gateway]
+    S -->|admin password| F2[Edge Function: admin-projects]
+    F2 -->|service role| DB
+```
+
+- Projects are stored in the Supabase `projects` table. Anyone can **read** them, but only the `admin-projects` Edge Function **writes** to it, after checking the admin password.
+- The `cyberbot-chat` Edge Function sends the conversation to the AI model and streams the reply back to the site.
+
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 18 or later, and npm
+- A [Supabase](https://supabase.com) project (to show projects and use the chatbot)
+
+### Installation
+
+```bash
+git clone https://github.com/JLFlo12/florian-portfolio.git
+cd florian-portfolio
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Then open **http://localhost:8080**.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment variables
 
-**Use GitHub Codespaces**
+Front end (`.env` file):
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```env
+VITE_SUPABASE_URL=https://<project-id>.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=<anon key>
+VITE_SUPABASE_PROJECT_ID=<project-id>
+```
 
-## What technologies are used for this project?
+Edge Functions secrets (`supabase secrets set NAME=value`):
 
-This project is built with:
+| Secret | Used by | Role |
+| --- | --- | --- |
+| `ADMIN_PASSWORD` | `admin-projects` | Password for admin mode |
+| `LOVABLE_API_KEY` | `cyberbot-chat` | Key for the Lovable AI Gateway |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Database and functions
 
-## How can I deploy this project?
+```bash
+supabase link --project-ref <project-id>
+supabase db push
+supabase functions deploy admin-projects
+supabase functions deploy cyberbot-chat
+```
 
-Simply open [Lovable](https://lovable.dev/projects/e1615730-1b4c-4dbe-abde-fae953a4d1b4) and click on Share -> Publish.
+### Scripts
 
-## Can I connect a custom domain to my Lovable project?
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the development server (port 8080) |
+| `npm run build` | Builds the production version into `dist/` |
+| `npm run preview` | Previews the production build locally |
+| `npm run lint` | Runs ESLint |
 
-Yes, you can!
+## Project structure
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```
+florian-portfolio/
+├── public/
+│   ├── buildings/             # Images for the "Guess the Building" game
+│   ├── portfolio-v1/          # First version of the portfolio (HTML/CSS/JS)
+│   └── mon-cv.pdf             # CV
+├── src/
+│   ├── components/
+│   │   ├── admin/             # Admin login, project form, gallery editor
+│   │   ├── games/             # The 5 mini-games
+│   │   ├── Layout.tsx         # Header, navigation, theme and language switches
+│   │   └── ui/                # shadcn/ui components
+│   ├── contexts/              # Theme (dark/light)
+│   ├── data/                  # Project galleries
+│   ├── hooks/                 # Admin authentication, projects (React Query)
+│   ├── i18n/                  # French and English translations
+│   ├── integrations/supabase/ # Supabase client and generated types
+│   └── pages/                 # Home, Projects, About, Contact, Jarvis, Games
+├── supabase/
+│   ├── functions/             # admin-projects, cyberbot-chat
+│   └── migrations/            # projects table, storage bucket
+└── vercel.json                # SPA rewrites for Vercel
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Deployment
+
+The site is deployed on **Vercel**. `vercel.json` sends every route to `index.html`, so links such as `/projects` work when the page is reloaded.
+
+## License
+
+The source code is released under the [MIT License](LICENSE).
+Personal content (CV, photos, project descriptions) and third-party images are **not** covered by this license and may not be reused without permission.
