@@ -9,6 +9,7 @@ import { X, Upload, Plus } from 'lucide-react';
 import { uploadThumbnail, DynamicProject } from '@/hooks/useDynamicProjects';
 
 interface ProjectFormDialogProps {
+  adminPassword: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (project: Partial<DynamicProject>) => void;
@@ -16,7 +17,7 @@ interface ProjectFormDialogProps {
   loading?: boolean;
 }
 
-const ProjectFormDialog = ({ open, onOpenChange, onSubmit, project, loading }: ProjectFormDialogProps) => {
+const ProjectFormDialog = ({ open, onOpenChange, onSubmit, project, loading, adminPassword }: ProjectFormDialogProps) => {
   const [title, setTitle] = useState('');
   const [descFr, setDescFr] = useState('');
   const [descEn, setDescEn] = useState('');
@@ -73,7 +74,7 @@ const ProjectFormDialog = ({ open, onOpenChange, onSubmit, project, loading }: P
     if (!file) return;
     setUploading(true);
     try {
-      const url = await uploadThumbnail(file);
+      const url = await uploadThumbnail(file, adminPassword);
       setThumbnailUrl(url);
     } catch (err) {
       console.error('Upload error:', err);

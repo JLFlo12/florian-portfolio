@@ -82,14 +82,16 @@ export const useDeleteProject = (adminPassword: string) => {
   });
 };
 
-export const uploadThumbnail = async (file: File): Promise<string> => {
-  const fileName = `${Date.now()}-${file.name}`;
+export const uploadThumbnail = async (file: File, adminPassword: string): Promise<string> => {
+  const { data: signed, error: signingError } = await supabase.functions.invoke('admin-projects', {
+    headers: { 'x-admin-password': adminPassword },
+    body: { action: 'upload-url', fileName: file.name, contentType: file.type },
+  });
+  if (signingError) throw signingError;
+  if (!signed?.path || !signed?.token || !signed?.publicUrl) throw new Error('Upload authorization failed');
   const { error } = await supabase.storage
     .from('project-thumbnails')
-    .upload(fileName, file);
+    .uploadToSignedUrl(signed.path, signed.token, file, { contentType: file.type });
   if (error) throw error;
-  const { data } = supabase.storage
-    .from('project-thumbnails')
-    .getPublicUrl(fileName);
-  return data.publicUrl;
+  return signed.publicUrl;
 };

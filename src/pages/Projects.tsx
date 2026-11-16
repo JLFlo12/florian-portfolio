@@ -172,6 +172,7 @@ const Projects = () => {
       {/* Dialogs */}
       <AdminLoginDialog open={showLoginDialog} onOpenChange={setShowLoginDialog} onLogin={login} />
       <ProjectFormDialog
+        adminPassword={adminPassword}
         open={showFormDialog}
         onOpenChange={(open) => { setShowFormDialog(open); if (!open) setEditingProject(null); }}
         onSubmit={handleCreateOrUpdate}

@@ -8,13 +8,14 @@ import { uploadThumbnail, GalleryImage } from '@/hooks/useDynamicProjects';
 import { toast } from 'sonner';
 
 interface GalleryEditorProps {
+  adminPassword: string;
   projectId: string;
   detailedContent: any[];
   galleryImages: GalleryImage[];
   onSave: (data: { detailed_content: any[]; gallery_images: GalleryImage[] }) => Promise<void>;
 }
 
-const GalleryEditor = ({ projectId, detailedContent, galleryImages, onSave }: GalleryEditorProps) => {
+const GalleryEditor = ({ projectId, detailedContent, galleryImages, onSave, adminPassword }: GalleryEditorProps) => {
   const [sections, setSections] = useState<any[]>(detailedContent || []);
   const [images, setImages] = useState<GalleryImage[]>(galleryImages || []);
   const [saving, setSaving] = useState(false);
@@ -48,7 +49,7 @@ const GalleryEditor = ({ projectId, detailedContent, galleryImages, onSave }: Ga
     setUploading(true);
     try {
       for (const file of Array.from(files)) {
-        const url = await uploadThumbnail(file);
+        const url = await uploadThumbnail(file, adminPassword);
         setImages(prev => [...prev, { url, title: file.name.replace(/\.[^.]+$/, ''), description: '' }]);
       }
       toast.success('Image(s) uploadée(s)');
