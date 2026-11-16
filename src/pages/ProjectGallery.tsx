@@ -161,6 +161,7 @@ const ProjectGallery = () => {
           {/* Edit mode */}
           {editing && isAdmin && (
             <GalleryEditor
+              adminPassword={adminPassword}
               projectId={dynamicId!}
               detailedContent={details}
               galleryImages={galleryImages}
